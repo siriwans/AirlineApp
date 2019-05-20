@@ -1,0 +1,23 @@
+** Airline Assistant Schema
+**
+** last edited by Christina 5/19
+
+************ Schema:
+
+Booking(id, customer, flightNo, payment)
+Flight(id, flightNo, departure, arrival, source, destination)
+Customer(id, passport, firstname, lastname)
+Payment(id, customer, creditcard, ccv, exp) --like receipt
+
+************ CREATE TABLE Statement examples:
+
+CREATE TABLE Booking(
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    customer BIGINT NOT NULL,
+    flightno VARCHAR(7) NOT NULL,
+    payment BIGINT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (customer) references Customer(id),
+    FOREIGN KEY (flightno) references Flight(id),
+    FOREIGN KEY (parmeny) references Payment(id),
+    );
