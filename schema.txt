@@ -8,7 +8,7 @@ Booking(id, reservationNo, customer, flightNo, transaction)
 Flight(id, flightNo, departure, arrival, source, destination)
 Customer(id, passport, country, firstname, lastname)
 CreditCard(id, firstname, lastname, creditcard, ccv, exp) --like receipt
-Transaction(id, creditcard, amount, date, good)
+Transaction(id, creditcard, amount, date, cancelled)
 
 ************ CREATE TABLE Statement examples:
 
