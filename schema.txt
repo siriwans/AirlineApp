@@ -7,8 +7,8 @@
 Booking(id, reservationNo, customer, flightNo, transaction)
 Flight(id, flightNo, departure, arrival, source, destination)
 Customer(id, passport, country, firstname, lastname)
-CreditCard(id, firstname, lastname, creditcard, ccv, exp) --like receipt
-Transaction(id, creditcard, amount, date, cancelled)
+CreditCard(id, firstname, lastname, creditcard, ccv, exp)
+Transaction(id, creditcard, amount, date, cancelled, refund)
 
 ************ CREATE TABLE Statement examples:
 
@@ -17,9 +17,18 @@ CREATE TABLE Booking(
     reservationNo VARCHAR(9) NOT NULL,
     customer BIGINT NOT NULL,
     flightno VARCHAR(7) NOT NULL,
-    payment BIGINT NOT NULL,
+    transaction BIGINT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (customer) references Customer(id),
     FOREIGN KEY (flightno) references Flight(id),
     FOREIGN KEY (transaction) references Transaction(id),
-    );
+);
+
+CREATE TABLE Customer(
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    passport VARCHAR(9),
+
+
+CREATE TABLE Flight(
+    id BIGINT NOT NULL,
+    flightNo,
