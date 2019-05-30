@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CSC365FinalProject.iml" filepath="$PROJECT_DIR$/CSC365FinalProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/AirlineApp.iml" filepath="$PROJECT_DIR$/.idea/AirlineApp.iml" />
     </modules>
   </component>
 </project>
