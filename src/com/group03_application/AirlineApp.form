@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.group03_application.AirlineApp">
+  <grid id="27dc6" binding="pnlMain" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="800" height="600"/>
+    </constraints>
+    <properties>
+      <minimumSize width="800" height="600"/>
+      <preferredSize width="800" height="600"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="fc694" binding="pnlMainCenter" layout-manager="GridBagLayout">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="41c42" binding="pnlInput" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="27e7f" class="javax.swing.JLabel" binding="lblSource">
+                <constraints/>
+                <properties>
+                  <text value="From: "/>
+                </properties>
+              </component>
+              <component id="a1898" class="javax.swing.JTextField" binding="txtSource">
+                <constraints/>
+                <properties>
+                  <minimumSize width="100" height="30"/>
+                  <preferredSize width="100" height="30"/>
+                </properties>
+              </component>
+              <hspacer id="110ea">
+                <constraints/>
+              </hspacer>
+              <component id="6c076" class="javax.swing.JLabel" binding="lblDestin">
+                <constraints/>
+                <properties>
+                  <text value="To:"/>
+                </properties>
+              </component>
+              <component id="1970e" class="javax.swing.JTextField" binding="txtDestin">
+                <constraints/>
+                <properties>
+                  <minimumSize width="100" height="30"/>
+                  <preferredSize width="100" height="30"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="59e6c" class="javax.swing.JButton" binding="btnSearch">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Search"/>
+            </properties>
+          </component>
+          <component id="69e67" class="javax.swing.JTable" binding="tblFlights" custom-create="true">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties/>
+          </component>
+        </children>
+      </grid>
+      <component id="453e4" class="javax.swing.JLabel" binding="lblHeader">
+        <constraints border-constraint="North"/>
+        <properties>
+          <text value="Flights"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
