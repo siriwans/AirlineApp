@@ -24,7 +24,9 @@ CREATE TABLE airlines(
 	PRIMARY KEY (Id));
 
 CREATE TABLE planes(
-    Id INTEGER NOT NULL AUTO_INCREMENT,
+    Id INTEGER NOT NULL,
+    Capacity INTEGER NOT NULL,
+    isFull ENUM("Yes", "No"),
     PRIMARY KEY(Id));
 
 CREATE TABLE flightInfo(
@@ -85,5 +87,7 @@ CREATE TABLE transactions(
     PRIMARY KEY(Id),
     FOREIGN KEY(creditCard) REFERENCES creditCards(CardNo),
     FOREIGN KEY(Booking) REFERENCES bookings(Id));
+
+
 
 
