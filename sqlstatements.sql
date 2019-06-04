@@ -24,7 +24,9 @@ CREATE TABLE airlines(
 	PRIMARY KEY (Id));
 
 CREATE TABLE planes(
-    Id INTEGER NOT NULL AUTO_INCREMENT,
+    Id INTEGER NOT NULL,
+    Capacity INTEGER NOT NULL,
+    isFull ENUM("Yes", "No"),
     PRIMARY KEY(Id));
 
 CREATE TABLE flightInfo(
@@ -33,15 +35,14 @@ CREATE TABLE flightInfo(
     PlaneId INTEGER NOT NULL,
     Arrival DATETIME NOT NULL,
     Departure DATETIME NOT NULL,
-    SeatNo INTEGER NOT NULL,
     PRIMARY KEY(FlightNo, Airline, PlaneId),
     FOREIGN KEY (FlightNo) REFERENCES flights(FlightNo),
     FOREIGN KEY (Airline) REFERENCES airlines(Id),
     FOREIGN KEY (PlaneId) REFERENCES planes(Id));
 
 CREATE TABLE seatings(
-    PlaneId INTEGER NOT NULL
-    SeatNo INTEGER NOT NULL
+    PlaneId INTEGER NOT NULL,
+    SeatNo INTEGER NOT NULL,
     Class ENUM("First", "Business", "Economy") NOT NULL,
     Occupied ENUM("Yes", "No") NOT NULL,
     PRIMARY KEY(PlaneId, SeatNo),
@@ -68,11 +69,13 @@ CREATE TABLE bookings(
     Customer INTEGER NOT NULL,
     CardNo INTEGER NOT NULL,
     FlightNo INTEGER NOT NULL,
+    SeatNo INTEGER NOT NULL,
     Cancelled ENUM("Yes", "No") NOT NULL,
     PRIMARY KEY(ReservationNo),
     FOREIGN KEY(Customer) REFERENCES customers(Id),
     FOREIGN KEY(CardNo) REFERENCES creditCards(Id),
-    FOREIGN KEY(FlightNo) REFERENCES flights(FlightNo));
+    FOREIGN KEY(FlightNo) REFERENCES flights(FlightNo)
+    );
 
 CREATE TABLE transactions(
     Id INTEGER NOT NULL,
@@ -84,5 +87,7 @@ CREATE TABLE transactions(
     PRIMARY KEY(Id),
     FOREIGN KEY(creditCard) REFERENCES creditCards(CardNo),
     FOREIGN KEY(Booking) REFERENCES bookings(Id));
+
+
 
 
