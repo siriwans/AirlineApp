@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FlightListComponent {
+public class FlightComponent {
     private JLabel lblDeparture;
     private JTextField txtDeparture;
     private JLabel lblArrival;
@@ -19,7 +19,7 @@ public class FlightListComponent {
     private JLabel lblClass;
     private JComboBox cboClass;
 
-    public FlightListComponent(String source, String destination, String departure, String arrival) {
+    public FlightComponent(String source, String destination, String departure, String arrival) {
         this.txtSourceAirport.setText(source);
         this.txtDestination.setText(destination);
         this.txtDeparture.setText(departure);

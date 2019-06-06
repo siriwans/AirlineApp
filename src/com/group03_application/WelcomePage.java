@@ -5,11 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
-import java.util.Vector;
 
 public class WelcomePage {
 
-    AirlineDatabase airlineDB;
+    private AirlineDatabase airlineDB;
+    private String currentCustomer;
 
     private JPanel pnlFlights;
     private JTextField txtSource;
@@ -46,13 +46,21 @@ public class WelcomePage {
     private JTextField txtLastName;
     private JLabel lblCountry;
     private JTextField txtCountry;
-    private JLabel lblCardInfo;
-    private JTable tblCard;
     private JButton btnLogin;
     private JLabel lblSignUpHeader;
     private JPanel pnlFlightsResults;
     private JPanel pnlFlightsZoom;
     private JScrollPane scrResults;
+    private JButton btnSignUpCancel;
+    private JButton btnSignUpConfirm;
+    private JPanel pnlUserInfo;
+    private JLabel lblUserHeader;
+    private JPanel pnlReservations;
+    private JScrollPane scrReservationsActive;
+    private JScrollPane scrReservationsInactive;
+    private JTextField txtPassport;
+    private JButton btnLogout;
+    private JTextField txtPassengerNo;
     private JList<JPanel> listResults;
 
 
@@ -85,8 +93,6 @@ public class WelcomePage {
                 CardLayout cl = (CardLayout)(pnlBody.getLayout());
                 cl.show(pnlBody, "cardFlights");
 
-
-                JOptionPane.showMessageDialog(null, (new Flights()).GetMainPanel());
             }
         });
 
@@ -95,6 +101,43 @@ public class WelcomePage {
             public void actionPerformed(ActionEvent e) {
                 CardLayout cl = (CardLayout)(pnlUserCard.getLayout());
                 cl.show(pnlUserCard, "cardSignUp");
+            }
+        });
+        btnLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if (txtPassportID.getText().equals("")) {
+                    System.out.println("empty string");
+                    JOptionPane.showMessageDialog(frame, "Please enter your passport.");
+                } else {
+                    //TODO check passport id and get customer
+                    ((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardUserInfo");
+                    currentCustomer = txtPassportID.getText();
+                }
+
+            }
+        });
+        btnSignUpCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardLogin");
+            }
+        });
+        btnSignUpConfirm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Get info and insert into query
+                JOptionPane.showMessageDialog(frame, "Customer created. Login with your passport id: ###");
+                ((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardLogin");
+            }
+        });
+
+        btnLogout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentCustomer = "";
+                ((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardLogin");
             }
         });
     }
@@ -112,7 +155,7 @@ public class WelcomePage {
         try {
             while (data.next()) {
                 System.out.println("Hello");
-                FlightListComponent flightObj = new FlightListComponent(
+                FlightComponent flightObj = new FlightComponent(
                         data.getString("sourceAirport"),
                         data.getString("destAirport"),
                         "10:00pm",
@@ -133,6 +176,10 @@ public class WelcomePage {
         //tblFlights = new JTable(data, columnNames);
         //scrResults.setViewportView(listResults);
         //tblFlights.setBounds(30, 40, 200, 400);
+    }
+
+    private void RequeryReservations() {
+
     }
 
 }
