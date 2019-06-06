@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 
 public class WelcomePage {
 
-    private AirlineDatabase airlineDB;
     private String currentCustomer;
 
     private JPanel pnlFlights;
@@ -64,8 +63,7 @@ public class WelcomePage {
     private JList<JPanel> listResults;
 
 
-    public WelcomePage(AirlineDatabase airlineDB) {
-        this.airlineDB = airlineDB;
+    public WelcomePage() {
 
         JFrame frame = new JFrame("WelcomePage");
         frame.setContentPane(pnlMain);
@@ -145,7 +143,7 @@ public class WelcomePage {
 
     private void RequeryFlightsTable() {
 
-        ResultSet data = airlineDB.SearchFlights(txtSource.getText(), txtDestin.getText());
+        ResultSet data = AirlineApp.airlineDB.SearchFlights(txtSource.getText(), txtDestin.getText());
 
         JPanel gridResults = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -154,12 +152,15 @@ public class WelcomePage {
 
         try {
             while (data.next()) {
-                System.out.println("Hello");
                 FlightComponent flightObj = new FlightComponent(
+                        data.getInt("flightNo"),
+                        data.getString("Airline"),
+                        Integer.parseInt(txtPassengerNo.getText()),
                         data.getString("sourceAirport"),
                         data.getString("destAirport"),
                         "10:00pm",
                         "3:00am");
+
                         //TODO data.getString("departure"),
                         //TODO data.getString("arrival" ));
                 gridResults.add(flightObj.getMainPanel(), c);

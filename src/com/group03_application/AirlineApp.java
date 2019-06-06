@@ -2,7 +2,7 @@ package com.group03_application;
 
 public class AirlineApp {
 
-    private static AirlineDatabase airlineDB;
+    public static AirlineDatabase airlineDB;
 
     public static void main(String[] args)
     {
@@ -10,7 +10,7 @@ public class AirlineApp {
         airlineDB = new AirlineDatabase();
         airlineDB.Open();
 
-        WelcomePage welcomePage = new WelcomePage(airlineDB);
+        WelcomePage welcomePage = new WelcomePage();
 
         // Close
 

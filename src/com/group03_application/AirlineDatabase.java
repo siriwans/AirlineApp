@@ -17,10 +17,12 @@ public class AirlineDatabase {
     Connection connObj;
 
     public AirlineDatabase() {
+
     }
 
     // Connect and open the database
     public boolean Open() {
+
         try
         {
             //checks if the driver class is available
@@ -54,6 +56,21 @@ public class AirlineDatabase {
             ResultSet results = query.executeQuery();
 
             return results;
+        }
+        catch (Exception sqlException){
+            sqlException.printStackTrace();
+        }
+        return null;
+    }
+
+    public ResultSet AvailableSeats(String flightNo, String airline) {
+        try {
+            //TODO Write query to get available seats the customer can choose from
+            /*
+            PreparedStatement query = connObj.prepareStatement("SELECT * FROM flights WHERE sourceAirport = '" + source + "' AND destAirport = '" + destin + "';" );
+            ResultSet results = query.executeQuery();
+
+            return results; */
         }
         catch (Exception sqlException){
             sqlException.printStackTrace();

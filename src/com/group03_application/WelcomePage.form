@@ -232,6 +232,7 @@
                       <background color="-3881788"/>
                       <minimumSize width="50" height="30"/>
                       <preferredSize width="50" height="30"/>
+                      <text value="1"/>
                     </properties>
                   </component>
                   <hspacer id="1dd3f">
