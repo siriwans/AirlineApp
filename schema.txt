@@ -22,13 +22,4 @@ CREATE TABLE Booking(
     FOREIGN KEY (customer) references Customer(id),
     FOREIGN KEY (flightno) references Flight(id),
     FOREIGN KEY (transaction) references Transaction(id),
-);
-
-CREATE TABLE Customer(
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    passport VARCHAR(9),
-
-
-CREATE TABLE Flight(
-    id BIGINT NOT NULL,
-    flightNo,
+   );
