@@ -32,8 +32,9 @@ public class FlightComponent {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("select flight");
                 JFrame frame = new JFrame();
+
                 SeatingPage seating = new SeatingPage(flightNo, airline, numPassengers);
-                frame.setContentPane(seating.getMainPanel());
+                frame.add(seating.getMainPanel());
                 frame.setVisible(true);
                 //JOptionPane.showMessageDialog(seating.getMainPanel(), null);
             }

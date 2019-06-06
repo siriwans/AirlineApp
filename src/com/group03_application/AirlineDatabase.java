@@ -63,6 +63,7 @@ public class AirlineDatabase {
         return null;
     }
 
+
     public ResultSet AvailableSeats(String flightNo, String airline) {
         try {
             //TODO Write query to get available seats the customer can choose from
@@ -71,9 +72,20 @@ public class AirlineDatabase {
             ResultSet results = query.executeQuery();
 
             return results; */
-        }
-        catch (Exception sqlException){
+        } catch (Exception sqlException) {
             sqlException.printStackTrace();
+        }
+        return null;
+    }
+
+    public ResultSet SearchForCustomer(String passport) {
+        try {
+            PreparedStatement query = connObj.prepareStatement(
+                    "SELECT id FROM customers where PassportNo =  passport" );
+            ResultSet results = query.executeQuery();
+            return results;
+        } catch (Exception sqlException) {
+            System.out.println("No customer by that passport in our system");
         }
         return null;
     }
