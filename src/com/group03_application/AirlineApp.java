@@ -1,17 +1,18 @@
 package com.group03_application;
 
-import javax.swing.*;
-
 public class AirlineApp {
 
     private static AirlineDatabase airlineDB;
 
     public static void main(String[] args)
     {
+        // Open database
         airlineDB = new AirlineDatabase();
-        boolean yes = airlineDB.OpenDatabase();
-        System.out.print(yes);
+        airlineDB.Open();
 
         WelcomePage welcomePage = new WelcomePage(airlineDB);
+
+        // Close
+
     }
 }

@@ -1,16 +1,15 @@
 package com.group03_application;
 
-import javax.smartcardio.Card;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.util.Vector;
-import java.awt.image.BufferedImage;
 
 public class WelcomePage {
 
-    private AirlineDatabase airlineDB;
+    AirlineDatabase airlineDB;
 
     private JPanel pnlFlights;
     private JTextField txtSource;
@@ -53,9 +52,13 @@ public class WelcomePage {
     private JLabel lblSignUpHeader;
     private JPanel pnlFlightsResults;
     private JPanel pnlFlightsZoom;
+    private JScrollPane scrResults;
+    private JList<JPanel> listResults;
 
 
     public WelcomePage(AirlineDatabase airlineDB) {
+        this.airlineDB = airlineDB;
+
         JFrame frame = new JFrame("WelcomePage");
         frame.setContentPane(pnlMain);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,9 +68,8 @@ public class WelcomePage {
         btnSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(txtSource.getText());
-                System.out.println(txtDestin.getText());
-                airlineDB.testQuery(txtSource.getText(), txtDestin.getText());
+                System.out.println("Searching...");
+                RequeryFlightsTable();
             }
         });
         btnUser.addActionListener(new ActionListener() {
@@ -88,7 +90,6 @@ public class WelcomePage {
             }
         });
 
-        System.out.println("hello");
         btnSignUp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -99,27 +100,39 @@ public class WelcomePage {
     }
 
 
-    private void createUIComponents() {
+    private void RequeryFlightsTable() {
 
-        // Column Names
-        Vector<String> columnNames = new Vector<String>();
-        columnNames.addElement("FlightNo");
-        columnNames.addElement("Airline");
-        columnNames.addElement("Source");
-        columnNames.addElement("Destination");
+        ResultSet data = airlineDB.SearchFlights(txtSource.getText(), txtDestin.getText());
 
-        Vector<String> d1 = new Vector<String>();
-        d1.addElement("1");
-        d1.addElement("ASC");
-        d1.addElement("San Antonio");
-        d1.addElement("San Francisco");
+        JPanel gridResults = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
 
-        Vector<Vector> data = new Vector<Vector>();
-        data.add(d1);
+        try {
+            while (data.next()) {
+                System.out.println("Hello");
+                FlightListComponent flightObj = new FlightListComponent(
+                        data.getString("sourceAirport"),
+                        data.getString("destAirport"),
+                        "10:00pm",
+                        "3:00am");
+                        //TODO data.getString("departure"),
+                        //TODO data.getString("arrival" ));
+                gridResults.add(flightObj.getMainPanel(), c);
+            }
+        }
+        catch (Exception sqlException){
+            sqlException.printStackTrace();
+        }
+
+        scrResults.setViewportView(gridResults);
+
 
         // Initializing the JTable
-        tblFlights = new JTable(data, columnNames);
-        tblFlights.setBounds(30, 40, 200, 300);
+        //tblFlights = new JTable(data, columnNames);
+        //scrResults.setViewportView(listResults);
+        //tblFlights.setBounds(30, 40, 200, 400);
     }
 
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Vector;
 
 public class AirlineDatabase {
 
@@ -19,7 +20,7 @@ public class AirlineDatabase {
     }
 
     // Connect and open the database
-    public boolean OpenDatabase() {
+    public boolean Open() {
         try
         {
             //checks if the driver class is available
@@ -46,24 +47,18 @@ public class AirlineDatabase {
         }
     }
 
-    public void testQuery(String source, String destin) {
+    public ResultSet SearchFlights(String source, String destin) {
         try {
             PreparedStatement query = connObj.prepareStatement(
                 "SELECT * FROM flights WHERE sourceAirport = '" + source + "' AND destAirport = '" + destin + "';" );
             ResultSet results = query.executeQuery();
-            while(results.next())
-            {
-                System.out.println(
-                        //you have to know the data type of each attribute
-                        "airline: " + results.getString("airline")
-                                + ", flight no: " + results.getInt("flightNo")
-                                + ", source airport: " + results.getString("sourceAirport")
-                                + ", destination airport: " + results.getString("destAirport"));
-            }
+
+            return results;
         }
         catch (Exception sqlException){
             sqlException.printStackTrace();
         }
+        return null;
     }
 }
 

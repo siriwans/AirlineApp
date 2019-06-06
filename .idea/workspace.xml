@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d0271db-d4d4-42f9-bf60-7da51dd72a7d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/group03_application/Flights.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/group03_application/Flights.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/group03_application/WelcomePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/group03_application/Flight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/group03_application/FlightListComponent.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/group03_application/FlightListComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/AirlineApp$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/AirlineApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/AirlineApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/group03_application/AirlineApp.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/group03_application/WelcomePage.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/AirlineDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/AirlineDatabase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/group03_application/AirlineApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/group03_application/AirlineApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/group03_application/WelcomePage.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/group03_application/WelcomePage.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/group03_application/WelcomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/group03_application/WelcomePage.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,17 +32,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/group03_application/AirlineApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="224">
+              <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/group03_application/WelcomePage.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="87" column="13" lean-forward="true" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
+            <state relative-caret-position="184">
+              <caret line="52" column="42" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -44,21 +51,48 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/group03_application/WelcomePage.form">
+        <entry file="file://$PROJECT_DIR$/src/com/group03_application/WelcomePage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="112" column="23" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/group03_application/Flight.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="32" lean-forward="true" selection-start-column="32" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/group03_application/FlightListComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#595#596#0" expanded="true" />
+                <element signature="e#625#626#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/group03_application/FlightListComponent.form">
           <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/group03_application/Flights.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-              <folding>
-                <element signature="e#662#663#0" expanded="true" />
-                <element signature="e#697#698#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/com/group03_application/WelcomePage.form">
+          <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -78,6 +112,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>pnlMain</find>
+      <find>ResultSet</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -93,20 +128,24 @@
         <option value="$PROJECT_DIR$/src/com/codebind/App.java" />
         <option value="$PROJECT_DIR$/src/AirlineDatabase.java" />
         <option value="$PROJECT_DIR$/src/com/codebind/AirlineApp.java" />
-        <option value="$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java" />
         <option value="$PROJECT_DIR$/src/com/group03_application/AirlineApp.form" />
         <option value="$PROJECT_DIR$/src/com/group03_application/AIrlineApp.java" />
-        <option value="$PROJECT_DIR$/src/com/group03_application/AirlineApp.java" />
         <option value="$PROJECT_DIR$/src/com/group03_application/Flights.form" />
         <option value="$PROJECT_DIR$/src/com/group03_application/Flights.java" />
+        <option value="$PROJECT_DIR$/src/com/group03_application/AirlineApp.java" />
+        <option value="$PROJECT_DIR$/src/com/group03_application/FlightList.form" />
         <option value="$PROJECT_DIR$/src/com/group03_application/WelcomePage.form" />
+        <option value="$PROJECT_DIR$/src/com/group03_application/Flight.java" />
         <option value="$PROJECT_DIR$/src/com/group03_application/WelcomePage.java" />
+        <option value="$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java" />
+        <option value="$PROJECT_DIR$/src/com/group03_application/FlightListComponent.java" />
+        <option value="$PROJECT_DIR$/src/com/group03_application/FlightListComponent.form" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
+    <option name="x" value="873" />
+    <option name="y" value="8" />
     <option name="width" value="980" />
     <option name="height" value="1090" />
   </component>
@@ -164,13 +203,7 @@
               <item name="AirlineApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="group03_application" type="462c0819:PsiDirectoryNode" />
-              <item name="Flights" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="AirlineApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="group03_application" type="462c0819:PsiDirectoryNode" />
-              <item name="WelcomePage" type="e9f4de52:FormNode" />
+              <item name="FlightListComponent" type="e9f4de52:FormNode" />
             </path>
           </expand>
           <select />
@@ -276,7 +309,7 @@
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19034852" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17426273" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -285,12 +318,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49798927" weight="0.32931727" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.788874" visible="true" weight="0.24364123" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.788874" visible="true" weight="0.3145917" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798927" weight="0.39892906" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49798927" weight="0.32931727" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49731904" weight="0.17001338" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49731904" weight="0.2797858" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.211126" side_tool="true" weight="0.24364123" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49865952" weight="0.32931727" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49329758" weight="0.32931727" />
@@ -380,54 +413,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java">
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/WelcomePage.jfd" />
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/Flights.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="51" column="74" selection-start-line="51" selection-start-column="74" selection-end-line="51" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="340">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/group03_application/WelcomePage.jfd">
-      <provider selected="true" editor-type-id="JFormDesigner">
-        <state paletteWidth="0" propertiesWidth="0" structureHeight="0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/group03_application/Flights.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/group03_application/Flights.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/javax/swing/plaf/basic/BasicButtonListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-          <folding>
-            <element signature="e#662#663#0" expanded="true" />
-            <element signature="e#697#698#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-15">
+          <caret line="247" column="23" lean-forward="true" selection-start-line="247" selection-start-column="23" selection-end-line="247" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/group03_application/AirlineApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="224">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/group03_application/WelcomePage.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/group03_application/WelcomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="87" column="13" lean-forward="true" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
+        <state relative-caret-position="191">
+          <caret line="112" column="23" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="52" column="42" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/FlightListComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#595#596#0" expanded="true" />
+            <element signature="e#625#626#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/Flight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="32" lean-forward="true" selection-start-column="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/Flights.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/WelcomePage.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/FlightListComponent.form">
+      <provider selected="true" editor-type-id="ui-designer" />
     </entry>
   </component>
   <component name="masterDetails">
