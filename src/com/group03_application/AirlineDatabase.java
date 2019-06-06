@@ -60,5 +60,17 @@ public class AirlineDatabase {
         }
         return null;
     }
+
+    public ResultSet SearchForCustomer(String passport) {
+        try {
+            PreparedStatement query = connObj.prepareStatement(
+                    "SELECT id FROM customers where PassportNo =  passport" );
+            ResultSet results = query.executeQuery();
+            return results;
+        } catch (Exception sqlException) {
+            System.out.println("No customer by that passport in our system");
+        }
+        return null;
+    }
 }
 
