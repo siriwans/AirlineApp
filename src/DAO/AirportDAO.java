@@ -10,11 +10,6 @@ public class AirportDAO implements Dao<Airport> {
     private List<Airport> airports = new ArrayList<>();
 
     @Override
-    public Optional<Airport> get(long id) {
-        return Optional.empty().ofNullable(airports.get((int) id));
-    }
-
-    @Override
     public List<Airport> getAll() {
         return airports;
     }

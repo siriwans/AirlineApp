@@ -8,10 +8,6 @@ public class AirlineDAO implements Dao<Airline> {
 
     private List<Airline> airlines = new ArrayList<>();
 
-    @Override
-    public Optional<Airline> get(long id) {
-        return Optional.empty().ofNullable(airlines.get((int) id));
-    }
 
     @Override
     public List<Airline> getAll() {
