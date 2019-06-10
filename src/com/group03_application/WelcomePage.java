@@ -147,7 +147,8 @@ public class WelcomePage {
 
     private void RequeryFlightsTable() {
 
-        ResultSet data = AirlineApp.airlineDB.SearchFlights(txtSource.getText(), txtDestin.getText());
+        ResultSet data = AirlineApp.airlineDB.SearchFlights(txtSource.getText(), txtDestin.getText(), txtDepartture.getText(),
+                txtArrival.getText(), txtPassengerNo.getText());
 
         JPanel gridResults = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();

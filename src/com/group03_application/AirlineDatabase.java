@@ -51,6 +51,7 @@ public class AirlineDatabase {
 
     public ResultSet SearchFlights(String source, String destin, String depart, String arrival, String numPassengers) {
         try {
+            ResultSet results;
             if(source == null || destin == null || numPassengers == null){
                 System.out.println("Please fill in your source airport, destination airport, and number " +
                         "of tickets/passengers");
@@ -63,7 +64,7 @@ public class AirlineDatabase {
                                 destin + "' AND f2.departure = " +
                                 " AND f2.planeId = p.id AND p.count <= " +
                                 Integer.valueOf(numPassengers) + ";");
-                ResultSet results = query.executeQuery();
+                results = query.executeQuery();
             }else if (depart == null && arrival != null){
                 PreparedStatement query = connObj.prepareStatement(
                         "SELECT * FROM flights f1, flightsInfo f2, planes p " +
@@ -72,7 +73,7 @@ public class AirlineDatabase {
                                 destin + "' AND f2.arrival = " +
                                 Date.valueOf(arrival) + " AND f2.planeId = p.id AND p.count <= " +
                                 Integer.valueOf(numPassengers) + ";");
-                ResultSet results = query.executeQuery();
+                results = query.executeQuery();
             }else if (depart == null && arrival == null){
                 PreparedStatement query = connObj.prepareStatement(
                         "SELECT * FROM flights f1, flightsInfo f2, planes p " +
@@ -80,7 +81,7 @@ public class AirlineDatabase {
                                 "f1.sourceAirport = '" + source + "' AND f1.destAirport = '" +
                                 destin + "' AND f2.planeId = p.id AND p.count <= " +
                                 Integer.valueOf(numPassengers));
-                ResultSet results = query.executeQuery();
+                results = query.executeQuery();
             }else{
                 //all filled in
                 PreparedStatement query = connObj.prepareStatement(
@@ -90,7 +91,7 @@ public class AirlineDatabase {
                                 destin + "' AND f2.departure = " + Date.valueOf(depart) + " AND f2.arrival = " +
                                 Date.valueOf(arrival) + " AND f2.planeId = p.id AND p.count <= " +
                                 Integer.valueOf(numPassengers) + ";");
-                ResultSet results = query.executeQuery();
+                results = query.executeQuery();
             }
             return results;
         }
@@ -104,12 +105,22 @@ public class AirlineDatabase {
     public ResultSet AvailableSeats(String flightNo, String airline) {
         try {
             //TODO Write query to get available seats the customer can choose from
-            /*
-            PreparedStatement query =
-                connObj.prepareStatement("SELECT * FROM flights WHERE sourceAirport = '" + source + "' AND destAirport = '" + destin + "';" );
-            ResultSet results = query.executeQuery();
 
-            return results; */
+            PreparedStatement query = connObj.prepareStatement("Select PlaneId from flightInfo fi where fi.Airline = '" + airline + "' and fi.FlightNo = '" + flightNo + "';");
+            ResultSet results = query.executeQuery();
+            if ((Integer)results.getInt("PlaneId") != null)
+            {
+                int planeid = results.getInt("PlaneId");
+                PreparedStatement query1 = connObj.prepareStatement("Select * from seatings s where s.PlaneId = " + planeid + " and s.Customer = NULL;");
+                ResultSet results1 = query1.executeQuery();
+                return results1;
+            }
+            else
+            {
+                System.out.println("No seats available in this plane");
+                return null;
+            }
+
         } catch (Exception sqlException) {
             sqlException.printStackTrace();
         }
