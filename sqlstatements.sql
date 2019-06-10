@@ -61,15 +61,15 @@ CREATE TABLE creditCards(
     PRIMARY KEY(CardNo));
 
 CREATE TABLE customers(
-    Id INTEGER NOT NULL AUTO INCREMENT,
+    Id INTEGER NOT NULL AUTO_INCREMENT,
     PassportNo VARCHAR(20) NOT NULL,
     Country VARCHAR(20) NOT NULL,
-    FirstName INTEGER NOT NULL,
-    LastName INTEGER NOT NULL,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
     PRIMARY KEY(Id));
 
 CREATE TABLE bookings(
-    ReservationNo INTEGER NOT NULL AUTO INCREMENT,
+    ReservationNo INTEGER NOT NULL AUTO_INCREMENT,
     Customer INTEGER NOT NULL,
     CardNo INTEGER NOT NULL,
     FlightNo INTEGER NOT NULL,
@@ -77,12 +77,12 @@ CREATE TABLE bookings(
     Cancelled ENUM("Yes", "No") NOT NULL,
     PRIMARY KEY(ReservationNo),
     FOREIGN KEY(Customer) REFERENCES customers(Id),
-    FOREIGN KEY(CardNo) REFERENCES creditCards(Id),
+    FOREIGN KEY(CardNo) REFERENCES creditCards(cardNo),
     FOREIGN KEY(FlightNo) REFERENCES flights(FlightNo)
     );
 
 CREATE TABLE transactions(
-    Id INTEGER NOT NULL AUTO INCREMENT,
+    Id INTEGER NOT NULL AUTO_INCREMENT,
     creditCard INTEGER NOT NULL,
     Amount REAL NOT NULL,
     Date DATE NOT NULL,
@@ -90,7 +90,7 @@ CREATE TABLE transactions(
     Refunded ENUM("Yes", "No") NOT NULL,
     PRIMARY KEY(Id),
     FOREIGN KEY(creditCard) REFERENCES creditCards(CardNo),
-    FOREIGN KEY(Booking) REFERENCES bookings(Id));
+    FOREIGN KEY(Booking) REFERENCES bookings(ReservationNo));
 
 
 

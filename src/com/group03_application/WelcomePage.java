@@ -109,7 +109,8 @@ public class WelcomePage {
                     System.out.println("empty string");
                     JOptionPane.showMessageDialog(frame, "Please enter your passport.");
                 } else {
-                    //TODO check passport id and get customer
+                    ResultSet data = AirlineApp.airlineDB.SearchForCustomer(txtPassportID.getText());
+                    //TODO need to show customer login info
                     ((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardUserInfo");
                     currentCustomer = txtPassportID.getText();
                 }
@@ -125,7 +126,7 @@ public class WelcomePage {
         btnSignUpConfirm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Get info and insert into query
+                AirlineApp.airlineDB.InsertCustomer(txtFirstName.getText(), txtLastName.getText(), txtCountry.getText(), txtPassport.getText());
                 JOptionPane.showMessageDialog(frame, "Customer created. Login with your passport id: ###");
                 ((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardLogin");
             }
