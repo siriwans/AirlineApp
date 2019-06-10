@@ -49,6 +49,18 @@ public class AirlineDatabase {
         }
     }
 
+    public ResultSet getFlight(String source, String destination) {
+        try {
+            PreparedStatement query = connObj.prepareStatement(
+                    "SELECT * FROM flights where SourceAirport = '" + source + "' AND DestAirport = '" + destination + "';" );
+            ResultSet results = query.executeQuery();
+            return results;
+        } catch (Exception sqlException) {
+            System.out.println("//TODO No customer by that passport in our system");
+        }
+        return null;
+    }
+
     public ResultSet SearchFlights(String source, String destin, String depart, String arrival, String numPassengers) {
         try {
             ResultSet results;
@@ -131,7 +143,7 @@ public class AirlineDatabase {
     public ResultSet searchForCustomer(String passport) {
         try {
             PreparedStatement query = connObj.prepareStatement(
-                    "SELECT id FROM customers where PassportNo = '" + passport + "';" );
+                    "SELECT * FROM customers where PassportNo = '" + passport + "';" );
             ResultSet results = query.executeQuery();
             return results;
         } catch (Exception sqlException) {
