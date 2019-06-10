@@ -195,7 +195,7 @@ public class AirlineDatabase {
         return null;
     }
 
-    public void addBooking(Integer customer, Integer creditCard, Integer flightNo, Integer[] seats){
+    public ResultSet addBooking(Integer customer, Integer creditCard, Integer flightNo, Integer[] seats){
         for(int i=0; i<seats.length; i++){
             try {
                 PreparedStatement query = connObj.prepareStatement("" +
@@ -206,10 +206,31 @@ public class AirlineDatabase {
                         ", " + seats[i] +
                         ", 'No');"
                 );
+                query.executeQuery();
             } catch (Exception sqlException){
                 sqlException.printStackTrace();
             }
         }
+        //to display the information of the ticket below. Should be able to get all the info
+        ResultSet results = null;
+        try{
+            PreparedStatement query = connObj.prepareStatement("SELECT * " +
+                    "FROM flights f1, flightInfo f2, airlines a, airports a1, airports a2, planes p, seatings s " +
+                    "WHERE f1.flightNo = " + flightNo +
+                    "AND f1.flightNo = f2.flightNo " +
+                    "AND f1.airline = a.id" +
+                    "AND f1.sourceAirport = a1.AirportCode" +
+                    "AND f1.destAirport = a2.AirportCode" +
+                    "AND f2.planeId = p.id" +
+                    "AND s.planeID = p.id" +
+                    "AND s.seatNo IN (" + seats +" );");
+            results = query.executeQuery();
+            return results;
+        }catch (Exception sqlException){
+            sqlException.printStackTrace();
+        }
+        return null;
+        //TODO: Add trigger to db to add to plane count, check capacity, and fill seat customer in
     }
 
 
