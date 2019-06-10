@@ -10,6 +10,7 @@ public class SeatingPage {
     private JScrollPane scrSeats;
     private JPanel pnlMain;
     private JTextField txtAirline;
+    private JLabel lblAirline;
 
 
     public SeatingPage(int flightNo, int airline, int numPassengers) {

@@ -1,5 +1,5 @@
 package com.group03_application;
-
+import java.sql.Date;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -49,12 +49,50 @@ public class AirlineDatabase {
         }
     }
 
-    public ResultSet SearchFlights(String source, String destin) {
+    public ResultSet SearchFlights(String source, String destin, String depart, String arrival, String numPassengers) {
         try {
-            PreparedStatement query = connObj.prepareStatement(
-                "SELECT * FROM flights WHERE sourceAirport = '" + source + "' AND destAirport = '" + destin + "';" );
-            ResultSet results = query.executeQuery();
-
+            ResultSet results;
+            if(source == null || destin == null || numPassengers == null){
+                System.out.println("Please fill in your source airport, destination airport, and number " +
+                        "of tickets/passengers");
+            }
+            if(arrival == null && depart != null){
+                PreparedStatement query = connObj.prepareStatement(
+                        "SELECT * FROM flights f1, flightsInfo f2, planes p " +
+                                "WHERE f1.flightNo = f2.flightNo AND " +
+                                "f1.sourceAirport = '" + source + "' AND f1.destAirport = '" +
+                                destin + "' AND f2.departure = " +
+                                " AND f2.planeId = p.id AND p.count <= " +
+                                Integer.valueOf(numPassengers) + ";");
+                results = query.executeQuery();
+            }else if (depart == null && arrival != null){
+                PreparedStatement query = connObj.prepareStatement(
+                        "SELECT * FROM flights f1, flightsInfo f2, planes p " +
+                                "WHERE f1.flightNo = f2.flightNo AND " +
+                                "f1.sourceAirport = '" + source + "' AND f1.destAirport = '" +
+                                destin + "' AND f2.arrival = " +
+                                Date.valueOf(arrival) + " AND f2.planeId = p.id AND p.count <= " +
+                                Integer.valueOf(numPassengers) + ";");
+                results = query.executeQuery();
+            }else if (depart == null && arrival == null){
+                PreparedStatement query = connObj.prepareStatement(
+                        "SELECT * FROM flights f1, flightsInfo f2, planes p " +
+                                "WHERE f1.flightNo = f2.flightNo AND " +
+                                "f1.sourceAirport = '" + source + "' AND f1.destAirport = '" +
+                                destin + "' AND f2.planeId = p.id AND p.count <= " +
+                                Integer.valueOf(numPassengers));
+                results = query.executeQuery();
+            }else{
+                //all filled in
+                PreparedStatement query = connObj.prepareStatement(
+                        "SELECT * FROM flights f1, flightsInfo f2, planes p " +
+                                "WHERE f1.flightNo = f2.flightNo AND " +
+                                "f1.sourceAirport = '" + source + "' AND f1.destAirport = '" +
+                                destin + "' AND f2.departure = " + Date.valueOf(depart) + " AND f2.arrival = " +
+                                Date.valueOf(arrival) + " AND f2.planeId = p.id AND p.count <= " +
+                                Integer.valueOf(numPassengers) + ";");
+                results = query.executeQuery();
+            }
             return results;
         }
         catch (Exception sqlException){
@@ -68,14 +106,22 @@ public class AirlineDatabase {
         System.out.println("availableSeats: flightNo = " + flightNo + "; airline = " + airline);
         try {
             //TODO Write query to get available seats the customer can choose from
-            PreparedStatement query = connObj.prepareStatement(
-                    "SELECT DISTINCT seattype FROM flightInfo fi " +
-                            "JOIN planes p ON fi.planeid = p.id " +
-                            "JOIN seatings s ON s.planeid = p.id " +
-                            "WHERE fi.flightno = " + flightNo + " AND fi.airline = " + airline + ";");
-            ResultSet results = query.executeQuery();
 
-            return results;
+            PreparedStatement query = connObj.prepareStatement("Select PlaneId from flightInfo fi where fi.Airline = '" + airline + "' and fi.FlightNo = '" + flightNo + "';");
+
+            ResultSet results = query.executeQuery();
+            if ((Integer)results.getInt("PlaneId") != null)
+            {
+                int planeid = results.getInt("PlaneId");
+                PreparedStatement query1 = connObj.prepareStatement("Select * from seatings s where s.PlaneId = " + planeid + " and s.Customer = NULL;");
+                ResultSet results1 = query1.executeQuery();
+                return results1;
+            }
+            else
+            {
+                System.out.println("No seats available in this plane");
+                return null;
+            }
         } catch (Exception sqlException) {
             sqlException.printStackTrace();
         }
@@ -85,7 +131,7 @@ public class AirlineDatabase {
     public ResultSet searchForCustomer(String passport) {
         try {
             PreparedStatement query = connObj.prepareStatement(
-                    "SELECT id FROM customers where PassportNo =  passport" );
+                    "SELECT id FROM customers where PassportNo = '" + passport + "';" );
             ResultSet results = query.executeQuery();
             return results;
         } catch (Exception sqlException) {
@@ -93,5 +139,19 @@ public class AirlineDatabase {
         }
         return null;
     }
+
+    public void InsertCustomer(String fname, String lname, String country, String passwordNo) {
+        try {
+            PreparedStatement query = connObj.prepareStatement(
+                    "INSERT INTO customers (PassportNo, Country, FirstName, LastName) " +
+                            "VALUES ('" + passwordNo + "','" +  country + "','" +  fname + "','" + lname+ "');"
+            );
+            query.executeUpdate();
+        } catch (Exception sqlException) {
+            System.out.println("No customer by that passport in our system");
+        }
+    }
+
+
 }
 
