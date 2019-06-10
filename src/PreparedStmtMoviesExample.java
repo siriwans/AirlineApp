@@ -21,7 +21,7 @@ public class PreparedStmtMoviesExample
             Connection connObj = DriverManager.getConnection(JDBC_DB_URL, JDBC_USER, JDBC_PASS);
             //create prepared sql statement
             PreparedStatement prepStatement = connObj.prepareStatement(
-                    "SELECT * FROM airlines");
+                    "SELECT * FROM airports");
             //plug in a parameter
             //prepStatement.setString(1, "James Cameron");
             //execute the statement
@@ -31,8 +31,8 @@ public class PreparedStmtMoviesExample
             {
                 System.out.println(
                         //you have to know the data type of each attribute
-                        "Id: " + resObj.getInt("Id") + ", Airline: " + resObj.getString("Airline")
-                                + ", Abbreviation: " + resObj.getString("Abbreviation"));
+                        "City: " + resObj.getString("City") + ", AirportCode: " + resObj.getString("AirportCode")
+                                + ", AirportName: " + resObj.getString("AirportName"));
             }
             connObj.close();
         }

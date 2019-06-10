@@ -67,11 +67,22 @@ public class AirlineDatabase {
     public ResultSet AvailableSeats(String flightNo, String airline) {
         try {
             //TODO Write query to get available seats the customer can choose from
-            /*
-            PreparedStatement query = connObj.prepareStatement("SELECT * FROM flights WHERE sourceAirport = '" + source + "' AND destAirport = '" + destin + "';" );
-            ResultSet results = query.executeQuery();
 
-            return results; */
+            PreparedStatement query = connObj.prepareStatement("Select PlaneId from flightInfo fi where fi.Airline = '" + airline + "' and fi.FlightNo = '" + flightNo + "';");
+            ResultSet results = query.executeQuery();
+            if ((Integer)results.getInt("PlaneId") != null)
+            {
+                int planeid = results.getInt("PlaneId");
+                PreparedStatement query1 = connObj.prepareStatement("Select * from seatings s where s.PlaneId = " + planeid + " and s.Customer = NULL;");
+                ResultSet results1 = query1.executeQuery();
+                return results1;
+            }
+            else
+            {
+                System.out.println("No seats available in this plane");
+                return null;
+            }
+
         } catch (Exception sqlException) {
             sqlException.printStackTrace();
         }

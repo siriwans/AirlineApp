@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 
 public class WelcomePage {
 
-    private String currentCustomer;
+    private int currentCustomer = -1;
 
     private JPanel pnlFlights;
     private JTextField txtSource;
@@ -110,9 +110,12 @@ public class WelcomePage {
                     JOptionPane.showMessageDialog(frame, "Please enter your passport.");
                 } else {
                     ResultSet data = AirlineApp.airlineDB.SearchForCustomer(txtPassportID.getText());
+                    try{
+                        currentCustomer = (int)data.getInt("Id");}
+                    catch (Exception sqlException){
+                        sqlException.printStackTrace();}
                     //TODO need to show customer login info
                     ((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardUserInfo");
-                    currentCustomer = txtPassportID.getText();
                 }
 
             }
@@ -135,7 +138,7 @@ public class WelcomePage {
         btnLogout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                currentCustomer = "";
+                currentCustomer = -1;
                 ((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardLogin");
             }
         });
