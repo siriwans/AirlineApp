@@ -64,21 +64,25 @@ public class AirlineDatabase {
     }
 
 
-    public ResultSet AvailableSeats(String flightNo, String airline) {
+    public ResultSet availableSeats(String flightNo, String airline) {
+        System.out.println("availableSeats: flightNo = " + flightNo + "; airline = " + airline);
         try {
             //TODO Write query to get available seats the customer can choose from
-            /*
-            PreparedStatement query = connObj.prepareStatement("SELECT * FROM flights WHERE sourceAirport = '" + source + "' AND destAirport = '" + destin + "';" );
+            PreparedStatement query = connObj.prepareStatement(
+                    "SELECT DISTINCT seattype FROM flightInfo fi " +
+                            "JOIN planes p ON fi.planeid = p.id " +
+                            "JOIN seatings s ON s.planeid = p.id " +
+                            "WHERE fi.flightno = " + flightNo + " AND fi.airline = " + airline + ";");
             ResultSet results = query.executeQuery();
 
-            return results; */
+            return results;
         } catch (Exception sqlException) {
             sqlException.printStackTrace();
         }
         return null;
     }
 
-    public ResultSet SearchForCustomer(String passport) {
+    public ResultSet searchForCustomer(String passport) {
         try {
             PreparedStatement query = connObj.prepareStatement(
                     "SELECT id FROM customers where PassportNo =  passport" );

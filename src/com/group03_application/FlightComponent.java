@@ -18,7 +18,7 @@ public class FlightComponent {
     private JTextField txtFlightNo;
     private int numPassengers;
 
-    public FlightComponent(int flightNo, String airline, int numPassengers, String source, String destination, String departure, String arrival) {
+    public FlightComponent(int flightNo, int airline, int numPassengers, String source, String destination, String departure, String arrival) {
         this.txtSourceAirport.setText(source);
         this.txtDestination.setText(destination);
         this.txtDeparture.setText(departure);
@@ -31,15 +31,10 @@ public class FlightComponent {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("select flight");
-                JFrame frame = new JFrame();
-
                 SeatingPage seating = new SeatingPage(flightNo, airline, numPassengers);
-                frame.add(seating.getMainPanel());
-                frame.setVisible(true);
-                //JOptionPane.showMessageDialog(seating.getMainPanel(), null);
+                JOptionPane.showConfirmDialog(null, seating.getMainPanel(),
+                        "Select seats", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
             }
-
-
         });
     }
 

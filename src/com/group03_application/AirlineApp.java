@@ -9,7 +9,6 @@ public class AirlineApp {
         // Open database
         airlineDB = new AirlineDatabase();
         airlineDB.Open();
-
         WelcomePage welcomePage = new WelcomePage();
 
         // Close

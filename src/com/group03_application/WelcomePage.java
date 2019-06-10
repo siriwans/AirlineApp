@@ -75,7 +75,7 @@ public class WelcomePage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Searching...");
-                RequeryFlightsTable();
+                RequeryFlightsResult();
             }
         });
         btnUser.addActionListener(new ActionListener() {
@@ -141,7 +141,7 @@ public class WelcomePage {
     }
 
 
-    private void RequeryFlightsTable() {
+    private void RequeryFlightsResult() {
 
         ResultSet data = AirlineApp.airlineDB.SearchFlights(txtSource.getText(), txtDestin.getText());
 
@@ -154,7 +154,7 @@ public class WelcomePage {
             while (data.next()) {
                 FlightComponent flightObj = new FlightComponent(
                         data.getInt("flightNo"),
-                        data.getString("Airline"),
+                        data.getInt("Airline"),
                         Integer.parseInt(txtPassengerNo.getText()),
                         data.getString("sourceAirport"),
                         data.getString("destAirport"),
@@ -179,8 +179,5 @@ public class WelcomePage {
         //tblFlights.setBounds(30, 40, 200, 400);
     }
 
-    private void RequeryReservations() {
-
-    }
 
 }
