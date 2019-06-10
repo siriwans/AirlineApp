@@ -81,7 +81,7 @@ public class AirlineDatabase {
     public ResultSet SearchForCustomer(String passport) {
         try {
             PreparedStatement query = connObj.prepareStatement(
-                    "SELECT id FROM customers where PassportNo =  passport" );
+                    "SELECT id FROM customers where PassportNo = '" + passport + "';" );
             ResultSet results = query.executeQuery();
             return results;
         } catch (Exception sqlException) {
@@ -89,5 +89,19 @@ public class AirlineDatabase {
         }
         return null;
     }
+
+    public void InsertCustomer(String fname, String lname, String country, String passwordNo) {
+        try {
+            PreparedStatement query = connObj.prepareStatement(
+                    "INSERT INTO customers (PassportNo, Country, FirstName, LastName) " +
+                            "VALUES ('" + passwordNo + "','" +  country + "','" +  fname + "','" + lname+ "');"
+            );
+            query.executeUpdate();
+        } catch (Exception sqlException) {
+            System.out.println("No customer by that passport in our system");
+        }
+    }
+
+
 }
 
