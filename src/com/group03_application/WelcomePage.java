@@ -1,10 +1,12 @@
 package com.group03_application;
+import DAO.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.util.List;
 
 public class WelcomePage {
 
@@ -75,7 +77,8 @@ public class WelcomePage {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Searching...");
-                RequeryFlightsResult();
+                RequeryFlightsResult(AirlineApp.flightDAO.get(txtSource.getText(), txtDestin.getText()));
+
             }
         });
         btnUser.addActionListener(new ActionListener() {
@@ -111,7 +114,7 @@ public class WelcomePage {
                 } else {
                     ResultSet data = AirlineApp.airlineDB.searchForCustomer(txtPassportID.getText());
                     try{
-                        currentCustomer = (int)data.getInt("Id");}
+                        currentCustomer = data.getInt("Id");}
                     catch (Exception sqlException){
                         sqlException.printStackTrace();}
                     //TODO need to show customer login info
@@ -145,43 +148,54 @@ public class WelcomePage {
     }
 
 
-    private void RequeryFlightsResult() {
+    private void RequeryFlightsResult(List<Flight> data) {
 
-        ResultSet data = AirlineApp.airlineDB.SearchFlights(txtSource.getText(), txtDestin.getText(), txtDepartture.getText(),
-                    txtArrival.getText(), txtPassengerNo.getText());
+        //ResultSet data = AirlineApp.airlineDB.SearchFlights(txtSource.getText(), txtDestin.getText(), txtDepartture.getText(),
+        //            txtArrival.getText(), txtPassengerNo.getText());
 
         JPanel gridResults = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
 
-        try {
-            while (data.next()) {
-                FlightComponent flightObj = new FlightComponent(
-                        data.getInt("flightNo"),
-                        data.getInt("Airline"),
-                        Integer.parseInt(txtPassengerNo.getText()),
-                        data.getString("sourceAirport"),
-                        data.getString("destAirport"),
-                        "10:00pm",
-                        "3:00am");
+        ResultSet results = AirlineApp.airlineDB.SearchFlights(txtSource.getText(),
+                txtDestin.getText(), txtDepartture.getText(), txtArrival.getText(), txtPassengerNo.getText());
 
-                        //TODO data.getString("departure"),
-                        //TODO data.getString("arrival" ));
-                gridResults.add(flightObj.getMainPanel(), c);
+        try {
+            while(results.next()) {
+                FlightComponent flightComponent = new FlightComponent(
+                        results.getInt("FlightNo"),
+                        results.getInt("Airline"),
+                        Integer.parseInt(txtPassengerNo.getText()),
+                        results.getString("SourceAirport"),
+                        results.getString("DestAirport"),   // TODO
+                        results.getString("DestAirport"),
+                        results.getString("DestAirport"));
             }
-        }
-        catch (Exception sqlException){
+        } catch (Exception sqlException){
             sqlException.printStackTrace();
         }
 
+
+        for (Flight f : data) {
+
+            int flightNo = f.getFlightNo();
+            int airline = f.getAirline();
+
+            FlightInfo fi = AirlineApp.flightInfoDAO.get(flightNo, airline);
+            FlightComponent flightComponent = new FlightComponent(
+                    fi.getFlightNo(),
+                    fi.getAirline(),
+                    Integer.parseInt(txtPassengerNo.getText()),
+                    f.getSourceAirport(),
+                    f.getDestAirport(),
+                    fi.getDeparture(),
+                    fi.getArrival());
+
+            gridResults.add(flightComponent.getMainPanel(), c);
+        }
+
         scrResults.setViewportView(gridResults);
-
-
-        // Initializing the JTable
-        //tblFlights = new JTable(data, columnNames);
-        //scrResults.setViewportView(listResults);
-        //tblFlights.setBounds(30, 40, 200, 400);
     }
 
 
