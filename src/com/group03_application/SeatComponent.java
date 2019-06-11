@@ -35,7 +35,6 @@ public class SeatComponent {
 
                     // update db
                     AirlineApp.airlineDB.unassignSeat(txtSeatNo.getText(), Integer.toString(flightNo), Integer.toString(airline));
-
                 }
 
                 // Assign a seat

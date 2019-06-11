@@ -313,9 +313,36 @@ public class AirlineDatabase {
         return null;
     }
 
-    public ResultSet bookingTransaction()
+    //checks the card validity too
+    public void InsertBookingTransaction(int cardNo)
     {
-        return null;
+        try {
+            if (checkCreditCard(cardNo) != null)
+            {
+                User.cardNumber = cardNo;
+                PreparedStatement booking = connObj.prepareStatement(
+                        "INSERT INTO bookings (Customer, CardNo, FlightNo, Airline) " +
+                                "VALUES ('" + User.Id + "','" +  cardNo + "','" +  User.flightNo + "','" + User.airline +  "');"
+                );
+                booking.executeUpdate();
+                PreparedStatement query = connObj.prepareStatement(
+                        "SELECT ReservationNo FROM bookings where Customer = " + User.Id + " and CardNo = " + cardNo +
+                                " and FlightNo = " + User.flightNo + " and Airline = " + User.airline + ";" );
+                ResultSet result = query.executeQuery();
+                result.next();
+                PreparedStatement transaction = connObj.prepareStatement(
+                        "INSERT INTO transactions (creditCard, Amount, Booking) " +
+                                "VALUES ( " + cardNo + "," +  User.totalPrice + "','" +
+                                result.getInt("ReservationNo") + ";"
+                );
+            }
+            else{
+                System.out.println("INVALID CARD");
+            }
+        }
+        catch (Exception sqlException) {
+        }
+
     }
 
 
