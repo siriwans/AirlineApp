@@ -10,8 +10,6 @@ import java.util.List;
 
 public class WelcomePage {
 
-    private int currentCustomer = -1;
-
     private JPanel pnlFlights;
     private JTextField txtSource;
     private JTextField txtDestin;
@@ -115,9 +113,13 @@ public class WelcomePage {
                 if (txtPassportID.getText().equals("")) {
                     JOptionPane.showMessageDialog(frame, "Please enter your passport.");
                 } else {
-                    ResultSet data = AirlineApp.airlineDB.searchForCustomer(txtPassportID.getText());
                     try{
-                        currentCustomer = data.getInt("Id");}
+                        ResultSet data = AirlineApp.airlineDB.searchForCustomer(txtPassportID.getText());
+                        data.next();
+                        User.Id = data.getInt("Id");
+                        User.firstName = data.getString("FirstName");
+                        User.lastName = data.getString("LastName");
+                    }
                     catch (Exception sqlException){
                         sqlException.printStackTrace();}
                     //TODO need to show customer login info
@@ -144,7 +146,6 @@ public class WelcomePage {
         btnLogout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                currentCustomer = -1;
                 ((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardLogin");
             }
         });

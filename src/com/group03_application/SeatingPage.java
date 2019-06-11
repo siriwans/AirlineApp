@@ -30,7 +30,6 @@ public class SeatingPage {
             gridResults.add(seat.getMainPanel(), c);
 
         }
-
         scrSeats.setViewportView(gridResults);
 
     }

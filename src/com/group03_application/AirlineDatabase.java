@@ -294,12 +294,11 @@ public class AirlineDatabase {
     }
 
     //returns NULL if no card in system, return resultSet if card in system
-    public ResultSet checkCreditCard(int cardnum, String fname, String lname)
+    public ResultSet checkCreditCard(int cardnum)
     {
         try {
             PreparedStatement query = connObj.prepareStatement(
-                    "SELECT * FROM creditCards where CardNo = " + cardnum + " and Firstname = '" +
-                            fname + "' and Lastname = '" + lname+ "';" );
+                    "SELECT * FROM creditCards where CardNo = " + cardnum + ";" );
             ResultSet results = query.executeQuery();
             if (results.next() && (Integer)results.getInt("CardNo") != null)
             {
