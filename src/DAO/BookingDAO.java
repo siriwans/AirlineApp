@@ -9,10 +9,8 @@ public class BookingDAO implements Dao<Booking> {
 
     private List<Booking> bookings = new ArrayList<>();
 
-    @Override
-    public Optional<Booking> get(long id) {
-        return Optional.empty().ofNullable(bookings.get((int) id));
-    }
+
+
 
     @Override
     public List<Booking> getAll() {

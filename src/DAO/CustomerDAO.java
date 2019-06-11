@@ -8,10 +8,7 @@ public class CustomerDAO implements Dao<Customer> {
 
     private List<Customer> customers = new ArrayList<>();
 
-    @Override
-    public Optional<Customer> get(long id) {
-        return Optional.empty().ofNullable(customers.get((int) id));
-    }
+
 
     @Override
     public List<Customer> getAll() {
