@@ -158,7 +158,7 @@ public class WelcomePage {
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
 
-        ResultSet results = AirlineApp.airlineDB.SearchFlights(txtSource.getText(),
+        ResultSet results = AirlineApp.airlineDB.SearchFlightsWithCity(txtSource.getText(),
                 txtDestin.getText(), txtDepartture.getText(), txtArrival.getText(), txtPassengerNo.getText());
 
         try {
