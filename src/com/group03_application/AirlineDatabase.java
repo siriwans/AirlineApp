@@ -196,15 +196,17 @@ public class AirlineDatabase {
 
     public void unassignSeat(String seatNo, String flightNo, String airline) {
         try {
+            //TODO UPDATE THE CUSTOMER
+            /*
             PreparedStatement query = connObj.prepareStatement(
                     "SELECT SeatNo, Class, Customer, SeatType, Price FROM seatings s " +
                             "JOIN flightInfo fin on s.PlaneId = fin.PlaneId" +
                             " WHERE fin.FlightNo = " + flightNo +
                             " AND fin.airline = " + airline +
                             " AND s.SeatNo = " + seatNo + ";"
-                    //TODO UPDATE THE CUSTOMER
+
             );
-            ResultSet results1 = query.executeQuery();
+            ResultSet results1 = query.executeQuery();*/
 
         } catch (Exception sqlException) {
             sqlException.printStackTrace();
@@ -219,6 +221,8 @@ public class AirlineDatabase {
                             "JOIN flightInfo fin on s.PlaneId = fin.PlaneId" +
                             " WHERE fin.FlightNo = " + flightNo +
                             " AND fin.airline = " + airline +
+                            " AND s.SeatType = '" + seatType + "'" +
+                            " AND s.Class ='" + seatClass + "'" +
                             " AND s.Customer is Null;"
             );
             ResultSet results1 = query.executeQuery();

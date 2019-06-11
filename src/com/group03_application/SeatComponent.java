@@ -28,33 +28,42 @@ public class SeatComponent {
             public void actionPerformed(ActionEvent e) {
                 // If seat previously selected, delete old one
                 if (!txtSeatNo.getText().equals("")) {
+                    //update gui
+                    txtSeatNo.setText("");
+                    txtPrice.setText("");
+                    // update db
                     AirlineApp.airlineDB.unassignSeat(txtSeatNo.getText(), Integer.toString(flightNo), Integer.toString(airline));
-                } else {
+                }
+
                     if (txtClass.getText().equals("") || txtSeatType.getText().equals("")) {
                         JOptionPane.showMessageDialog(null, "Please enter a class type: First, Business, Economy\n " +
                                 "and enter a seat type: Window, Aisle");
                     } else {
                         ResultSet rs = AirlineApp.airlineDB.availableSeats(Integer.toString(flightNo), Integer.toString(airline),
                                 txtClass.getText(), txtSeatType.getText());
-
                         try {
-                            if (rs.next()) {
-                                String seatNo = Integer.toString(rs.getInt("SeatNo"));
-
-                                // update gui
-                                txtSeatNo.setText(seatNo);
-                                txtPrice.setText(Integer.toString(rs.getInt("Price")));
-
-                                // update database
-                                AirlineApp.airlineDB.assignSeat(seatNo, Integer.toString(flightNo), Integer.toString(flightNo));
+                            if (!rs.next()) {
+                                JOptionPane.showMessageDialog(null, "That seat combination is not available");
+                                txtSeatType.setText("");
+                                txtClass.setText("");
                             }
+                            else {
+                                    String seatNo = Integer.toString(rs.getInt("SeatNo"));
+
+                                    // update gui
+                                    txtSeatNo.setText(seatNo);
+                                    txtPrice.setText(Integer.toString(rs.getInt("Price")));
+
+                                    // update database
+                                    AirlineApp.airlineDB.assignSeat(seatNo, Integer.toString(flightNo), Integer.toString(flightNo));
+                                }
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
 
                     }
                 }
-            }
+
         });
     }
 

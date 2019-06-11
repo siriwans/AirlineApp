@@ -76,7 +76,10 @@ public class WelcomePage {
         btnSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Searching...");
+                if (txtSource.getText().equals("") | txtDestin.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Please select a source and destination");
+                    return;
+                }
                 RequeryFlightsResult(AirlineApp.flightDAO.get(txtSource.getText(), txtDestin.getText()));
 
             }
@@ -148,9 +151,6 @@ public class WelcomePage {
 
 
     private void RequeryFlightsResult(List<Flight> data) {
-
-        //ResultSet data = AirlineApp.airlineDB.SearchFlights(txtSource.getText(), txtDestin.getText(), txtDepartture.getText(),
-        //            txtArrival.getText(), txtPassengerNo.getText());
 
         JPanel gridResults = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
