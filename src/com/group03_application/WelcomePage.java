@@ -76,8 +76,12 @@ public class WelcomePage {
         btnSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Searching...");
-                RequeryFlightsResult(AirlineApp.flightDAO.get(txtSource.getText(), txtDestin.getText()));
+                if (txtSource.getText().equals("") | txtDestin.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Please select a source and destination");
+                    return;
+                }
+                //RequeryFlightsResult(AirlineApp.flightDAO.get(txtSource.getText(), txtDestin.getText()));
+                RequeryFlightsResult();
 
             }
         });
@@ -109,7 +113,6 @@ public class WelcomePage {
             public void actionPerformed(ActionEvent e) {
 
                 if (txtPassportID.getText().equals("")) {
-                    System.out.println("empty string");
                     JOptionPane.showMessageDialog(frame, "Please enter your passport.");
                 } else {
                     ResultSet data = AirlineApp.airlineDB.searchForCustomer(txtPassportID.getText());
@@ -148,10 +151,7 @@ public class WelcomePage {
     }
 
 
-    private void RequeryFlightsResult(List<Flight> data) {
-
-        //ResultSet data = AirlineApp.airlineDB.SearchFlights(txtSource.getText(), txtDestin.getText(), txtDepartture.getText(),
-        //            txtArrival.getText(), txtPassengerNo.getText());
+    private void RequeryFlightsResult() {
 
         JPanel gridResults = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -179,26 +179,36 @@ public class WelcomePage {
         }
 
         scrResults.setViewportView(gridResults);
+    }
 
-       /* for (Flight f : data) {
+    private void RequeryActiveReservations() {
 
-            int flightNo = f.getFlightNo();
-            int airline = f.getAirline();
+        JPanel gridResults = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
 
-            FlightInfo fi = AirlineApp.flightInfoDAO.get(flightNo, airline);
-            FlightComponent flightComponent = new FlightComponent(
-                    fi.getFlightNo(),
-                    fi.getAirline(),
-                    Integer.parseInt(txtPassengerNo.getText()),
-                    f.getSourceAirport(),
-                    f.getDestAirport(),
-                    fi.getDeparture(),
-                    fi.getArrival());
+        ResultSet results = AirlineApp.airlineDB.SearchFlightsWithCity(txtSource.getText(),
+                txtDestin.getText(), txtDepartture.getText(), txtArrival.getText(), txtPassengerNo.getText());
 
-            gridResults.add(flightComponent.getMainPanel(), c);
+        try {
+            while(results.next()) {
+                FlightComponent flightComponent = new FlightComponent(
+                        results.getInt("f1.flightNo"),
+                        results.getInt("f1.airline"),
+                        Integer.parseInt(txtPassengerNo.getText()),
+                        results.getString("aSource.airportCode"),
+                        results.getString("aDest.airportCode"),
+                        results.getString("f2.arrival"),
+                        results.getString("f2.departure"));
+
+                gridResults.add(flightComponent.getMainPanel(), c);
+            }
+        } catch (Exception sqlException){
+            sqlException.printStackTrace();
         }
 
-        scrResults.setViewportView(gridResults);*/
+        scrResults.setViewportView(gridResults);
     }
 
 

@@ -20,8 +20,10 @@ public class PreparedStmtMoviesExample
             //get connection
             Connection connObj = DriverManager.getConnection(JDBC_DB_URL, JDBC_USER, JDBC_PASS);
             //create prepared sql statement
+
             PreparedStatement prepStatement = connObj.prepareStatement(
-                    "SELECT * FROM airports");
+                    "SELECT * FROM customers where PassportNo = '12345johndoe';" );
+
             //plug in a parameter
             //prepStatement.setString(1, "James Cameron");
             //execute the statement

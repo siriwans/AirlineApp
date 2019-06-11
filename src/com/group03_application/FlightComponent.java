@@ -1,6 +1,7 @@
 package com.group03_application;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,10 +33,16 @@ public class FlightComponent {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("select flight");
                 SeatingPage seating = new SeatingPage(flightNo, airline, numPassengers);
-                JOptionPane.showConfirmDialog(null, seating.getMainPanel(),
+                int response = JOptionPane.showConfirmDialog(null, seating.getMainPanel(),
                         "Select seats", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if (response == JOptionPane.OK_OPTION) {
+                    // open transaction page
+
+
+                }
             }
         });
+
     }
 
     public JPanel getMainPanel() {

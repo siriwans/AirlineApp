@@ -1,5 +1,4 @@
 package com.group03_application;
-import javax.sql.rowset.CachedRowSet;
 import java.sql.Timestamp;
 import java.sql.Date;
 import java.sql.Connection;
@@ -62,7 +61,6 @@ public class AirlineDatabase {
         }
         return null;
     }
-
 
     public ResultSet SearchFlightsWithCity(String sourceCity, String destCity, String depart, String arrival, String numPassengers) {
         //numpassengers should be 1 by default if 0. Make sure that is implemented
@@ -140,14 +138,14 @@ public class AirlineDatabase {
         return null;
     }
 
-    public ResultSet addBooking(Integer customer, Integer creditCard, Integer FlightNo, Integer[] seats){
+    public ResultSet addBooking(Integer customer, Integer creditCard, Integer flightNo, Integer[] seats){
         for(int i=0; i<seats.length; i++){
             try {
                 PreparedStatement query = connObj.prepareStatement("" +
-                        "INSERT INTO bookings(customer, cardno, FlightNo, seatno, cancelled)" +
+                        "INSERT INTO bookings(customer, cardno, flightno, seatno, cancelled)" +
                         "VALUES (" + customer +
                         ", " + creditCard +
-                        ", " + FlightNo +
+                        ", " + flightNo +
                         ", " + seats[i] +
                         ", 'No');"
                 );
@@ -161,8 +159,8 @@ public class AirlineDatabase {
         try{
             PreparedStatement query = connObj.prepareStatement("SELECT * " +
                     "FROM flights f1, flightInfo f2, airlines a, airports a1, airports a2, planes p, seatings s " +
-                    "WHERE f1.FlightNo = " + FlightNo +
-                    "AND f1.FlightNo = f2.FlightNo " +
+                    "WHERE f1.flightNo = " + flightNo +
+                    "AND f1.flightNo = f2.flightNo " +
                     "AND f1.airline = a.id" +
                     "AND f1.sourceAirport = a1.AirportCode" +
                     "AND f1.destAirport = a2.AirportCode" +
@@ -179,26 +177,56 @@ public class AirlineDatabase {
     }
 
 
-    public ResultSet availableSeats(String FlightNo, String airline) {
-        System.out.println("availableSeats: FlightNo = " + FlightNo + "; airline = " + airline);
+    public void assignSeat(String seatNo, String flightNo, String airline) {
         try {
-            //TODO Write query to get available seats the customer can choose from
+            PreparedStatement query = connObj.prepareStatement(
+                    "SELECT SeatNo, Class, Customer, SeatType, Price FROM seatings s " +
+                            "JOIN flightInfo fin on s.PlaneId = fin.PlaneId" +
+                            " WHERE fin.FlightNo = " + flightNo +
+                            " AND fin.airline = " + airline +
+                            " AND s.SeatNo = " + seatNo + ";"
+                    //TODO UPDATE THE CUSTOMER
+            );
+            ResultSet results1 = query.executeQuery();
 
-            PreparedStatement query = connObj.prepareStatement("Select PlaneId from flightInfo fi where fi.Airline = '" + airline + "' and fi.FlightNo = '" + FlightNo + "';");
+        } catch (Exception sqlException) {
+            sqlException.printStackTrace();
+        }
+    }
 
-            ResultSet results = query.executeQuery();
-            if ((Integer)results.getInt("PlaneId") != null)
-            {
-                int planeid = results.getInt("PlaneId");
-                PreparedStatement query1 = connObj.prepareStatement("Select * from seatings s where s.PlaneId = " + planeid + " and s.Customer = NULL;");
-                ResultSet results1 = query1.executeQuery();
-                return results1;
-            }
-            else
-            {
-                System.out.println("No seats available in this plane");
-                return null;
-            }
+    public void unassignSeat(String seatNo, String flightNo, String airline) {
+        try {
+            //TODO UPDATE THE CUSTOMER
+            /*
+            PreparedStatement query = connObj.prepareStatement(
+                    "SELECT SeatNo, Class, Customer, SeatType, Price FROM seatings s " +
+                            "JOIN flightInfo fin on s.PlaneId = fin.PlaneId" +
+                            " WHERE fin.FlightNo = " + flightNo +
+                            " AND fin.airline = " + airline +
+                            " AND s.SeatNo = " + seatNo + ";"
+
+            );
+            ResultSet results1 = query.executeQuery();*/
+
+        } catch (Exception sqlException) {
+            sqlException.printStackTrace();
+        }
+    }
+
+    public ResultSet availableSeats(String flightNo, String airline, String seatClass, String seatType) {
+        System.out.println("availableSeats: FlightNo = " + flightNo + "; airline = " + airline);
+        try {
+            PreparedStatement query = connObj.prepareStatement(
+                    "SELECT SeatNo, Class, Customer, SeatType, Price FROM seatings s " +
+                            "JOIN flightInfo fin on s.PlaneId = fin.PlaneId" +
+                            " WHERE fin.FlightNo = " + flightNo +
+                            " AND fin.airline = " + airline +
+                            " AND s.SeatType = '" + seatType + "'" +
+                            " AND s.Class ='" + seatClass + "'" +
+                            " AND s.Customer is Null;"
+            );
+            ResultSet results1 = query.executeQuery();
+            return results1;
         } catch (Exception sqlException) {
             sqlException.printStackTrace();
         }
@@ -228,6 +256,69 @@ public class AirlineDatabase {
             System.out.println("No customer by that passport in our system");
         }
     }
+    /*public void InsertBooking(int customer, int cardNo, int flightNo, int airline, int seatNo)
+    {
+       try {
+           PreparedStatement query = connObj.prepareStatement(
+                   "INSERT INTO bookings (Customer, CardNo, FlightNo, Airline, SeatNo, Cancelled) " +
+                           "VALUES ('" + customer + "','" +  cardNo + "','" +  flightNo + "','" + airline +  "','"
+                           + seatNo + "', 'No' );"
+           );
+           query.executeUpdate();
+       } catch (Exception sqlException) {
+       }
+    }*/
+
+    //PRINTS ALL SEATS AVAILABLE GIVEN FLIGHTNO AND AIRLINE
+    public ResultSet availableSeats(int flightNo, int airline) {
+        System.out.println("availableSeats: flightNo = " + flightNo + "; airline = " + airline);
+        try {
+            //TODO Write query to get available seats the customer can choose from
+
+            PreparedStatement query = connObj.prepareStatement("Select * from flightInfo fi join seatings s on s.PlaneId = fi.PlaneId" +
+                    " and fi.Airline = '" + airline + "' and fi.FlightNo = '" + flightNo + "';");
+            ResultSet results = query.executeQuery();
+            while (results.next())
+            {
+                System.out.println("SeatNo: " + results.getInt("SeatNo") + ", " +
+                        "Class: " + results.getString("Class") + ", " +
+                        "SeatType: " + results.getString("SeatType") + ", " +
+                        "Price: " + results.getDouble("Price"));
+            }
+            results.beforeFirst();
+            return results;
+        } catch (Exception sqlException) {
+            sqlException.printStackTrace();
+        }
+        return null;
+    }
+
+    //returns NULL if no card in system, return resultSet if card in system
+    public ResultSet checkCreditCard(int cardnum, String fname, String lname)
+    {
+        try {
+            PreparedStatement query = connObj.prepareStatement(
+                    "SELECT * FROM creditCards where CardNo = " + cardnum + " and Firstname = '" +
+                            fname + "' and Lastname = '" + lname+ "';" );
+            ResultSet results = query.executeQuery();
+            if (results.next() && (Integer)results.getInt("CardNo") != null)
+            {
+                results.beforeFirst();
+                System.out.println("YES");
+                return results;
+            }
+        } catch (Exception sqlException) {
+            System.out.println("No creditCard in our system please try again");
+        }
+        System.out.println("NO");
+        return null;
+    }
+
+    public ResultSet bookingTransaction()
+    {
+        return null;
+    }
+
 
 
 }
