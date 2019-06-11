@@ -63,6 +63,7 @@ public class AirlineDatabase {
         return null;
     }
 
+
     public ResultSet SearchFlightsWithCity(String sourceCity, String destCity, String depart, String arrival, String numPassengers) {
         //numpassengers should be 1 by default if 0. Make sure that is implemented
 
@@ -80,8 +81,8 @@ public class AirlineDatabase {
                                     "%' AND aSource.AirportCode = f1.sourceAirport " +
                                     " AND aDest.AirportCode = f1.destAirport " +
                                     " AND f1.FlightNo = f2.FlightNo " +
-                                    " AND f2.departure BETWEEN " + Timestamp.valueOf(depart + " 00:00:00") + " AND " + Timestamp.valueOf(depart + "23:59:59") +
-                                    " AND f2.planeId = p.id" +
+                                    " AND f2.departure BETWEEN '" + Timestamp.valueOf(depart + " 00:00:00") + "' AND '" + Timestamp.valueOf(depart + "23:59:59") +
+                                    "' AND f2.planeId = p.id" +
                                     " AND p.count <= " + Integer.valueOf(numPassengers) +
                                     " AND f1.airline = a.id" +
                                     " AND f1.airline = f2.airline" );
@@ -94,8 +95,8 @@ public class AirlineDatabase {
                                     "' AND aSource.AirportCode = f1.sourceAirport " +
                                     " AND aDest.AirportCode = f1.destAirport " +
                                     " AND f1.FlightNo = f2.FlightNo " +
-                                    " AND f2.Arrival BETWEEN " + Timestamp.valueOf(arrival + " 00:00:00") + " AND " + Timestamp.valueOf(arrival + "23:59:59") +
-                                    " AND f2.planeId = p.id" +
+                                    " AND f2.Arrival BETWEEN '" + Timestamp.valueOf(arrival + " 00:00:00") + "' AND '" + Timestamp.valueOf(arrival + "23:59:59") +
+                                    "' AND f2.planeId = p.id" +
                                     " AND p.count <= " + Integer.valueOf(numPassengers) +
                                     " AND f1.airline = a.id" +
                                     " AND f1.airline = f2.airline" );
@@ -122,9 +123,9 @@ public class AirlineDatabase {
                                     "' AND aSource.AirportCode = f1.sourceAirport " +
                                     " AND aDest.AirportCode = f1.destAirport " +
                                     " AND f1.FlightNo = f2.FlightNo " +
-                                    " AND f2.departure BETWEEN " + Timestamp.valueOf(depart + " 00:00:00") + " AND " + Timestamp.valueOf(depart + "23:59:59") +
-                                    " AND f2.Arrival BETWEEN " + Timestamp.valueOf(arrival + " 00:00:00") + " AND " + Timestamp.valueOf(arrival + "23:59:59") +
-                                    " AND f2.planeId = p.id" +
+                                    " AND f2.departure BETWEEN '" + Timestamp.valueOf(depart + " 00:00:00") + "' AND '" + Timestamp.valueOf(depart + "23:59:59") +
+                                    "' AND f2.Arrival BETWEEN '" + Timestamp.valueOf(arrival + " 00:00:00") + "' AND '" + Timestamp.valueOf(arrival + "23:59:59") +
+                                    "' AND f2.planeId = p.id" +
                                     " AND p.count <= " + Integer.valueOf(numPassengers) +
                                     " AND f1.airline = a.id" +
                                     " AND f1.airline = f2.airline" );
