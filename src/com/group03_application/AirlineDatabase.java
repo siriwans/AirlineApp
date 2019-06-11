@@ -322,7 +322,7 @@ public class AirlineDatabase {
                 User.cardNumber = cardNo;
                 PreparedStatement booking = connObj.prepareStatement(
                         "INSERT INTO bookings (Customer, CardNo, FlightNo, Airline) " +
-                                "VALUES ('" + User.Id + "','" +  cardNo + "','" +  User.flightNo + "','" + User.airline +  "');"
+                                "VALUES ('" + User.Id + "," +  cardNo + "," +  User.flightNo + "," + User.airline +  ");"
                 );
                 booking.executeUpdate();
                 PreparedStatement query = connObj.prepareStatement(
@@ -332,9 +332,10 @@ public class AirlineDatabase {
                 result.next();
                 PreparedStatement transaction = connObj.prepareStatement(
                         "INSERT INTO transactions (creditCard, Amount, Booking) " +
-                                "VALUES ( " + cardNo + "," +  User.totalPrice + "','" +
+                                "VALUES ( " + cardNo + "," +  User.totalPrice + "," +
                                 result.getInt("ReservationNo") + ";"
                 );
+                transaction.executeUpdate();
             }
             else{
                 System.out.println("INVALID CARD");
