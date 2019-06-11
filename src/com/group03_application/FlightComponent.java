@@ -1,6 +1,7 @@
 package com.group03_application;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -36,6 +37,7 @@ public class FlightComponent {
                         "Select seats", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
             }
         });
+
     }
 
     public JPanel getMainPanel() {

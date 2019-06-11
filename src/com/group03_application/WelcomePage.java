@@ -177,9 +177,8 @@ public class WelcomePage {
             sqlException.printStackTrace();
         }
 
-        scrResults.setViewportView(gridResults);
 
-       /* for (Flight f : data) {
+        for (Flight f : data) {
 
             int flightNo = f.getFlightNo();
             int airline = f.getAirline();
@@ -197,7 +196,7 @@ public class WelcomePage {
             gridResults.add(flightComponent.getMainPanel(), c);
         }
 
-        scrResults.setViewportView(gridResults);*/
+        scrResults.setViewportView(gridResults);
     }
 
 

@@ -1,5 +1,4 @@
 package com.group03_application;
-import javax.sql.rowset.CachedRowSet;
 import java.sql.Timestamp;
 import java.sql.Date;
 import java.sql.Connection;
@@ -62,7 +61,6 @@ public class AirlineDatabase {
         }
         return null;
     }
-
 
     public ResultSet SearchFlightsWithCity(String sourceCity, String destCity, String depart, String arrival, String numPassengers) {
         //numpassengers should be 1 by default if 0. Make sure that is implemented
@@ -140,14 +138,14 @@ public class AirlineDatabase {
         return null;
     }
 
-    public ResultSet addBooking(Integer customer, Integer creditCard, Integer FlightNo, Integer[] seats){
+    public ResultSet addBooking(Integer customer, Integer creditCard, Integer flightNo, Integer[] seats){
         for(int i=0; i<seats.length; i++){
             try {
                 PreparedStatement query = connObj.prepareStatement("" +
-                        "INSERT INTO bookings(customer, cardno, FlightNo, seatno, cancelled)" +
+                        "INSERT INTO bookings(customer, cardno, flightno, seatno, cancelled)" +
                         "VALUES (" + customer +
                         ", " + creditCard +
-                        ", " + FlightNo +
+                        ", " + flightNo +
                         ", " + seats[i] +
                         ", 'No');"
                 );
@@ -161,8 +159,8 @@ public class AirlineDatabase {
         try{
             PreparedStatement query = connObj.prepareStatement("SELECT * " +
                     "FROM flights f1, flightInfo f2, airlines a, airports a1, airports a2, planes p, seatings s " +
-                    "WHERE f1.FlightNo = " + FlightNo +
-                    "AND f1.FlightNo = f2.FlightNo " +
+                    "WHERE f1.flightNo = " + flightNo +
+                    "AND f1.flightNo = f2.flightNo " +
                     "AND f1.airline = a.id" +
                     "AND f1.sourceAirport = a1.AirportCode" +
                     "AND f1.destAirport = a2.AirportCode" +

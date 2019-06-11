@@ -8,6 +8,9 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Timestamp;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 public class AirlineApp {
 
     public static AirlineDatabase airlineDB;
