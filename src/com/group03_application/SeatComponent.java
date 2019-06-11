@@ -9,6 +9,9 @@ public class SeatComponent {
     private JLabel txtPassenger;
     private JComboBox cboSeatType;
     private JPanel pnlMain;
+    private JTextField txtSeatType;
+    private JTextField txtClass;
+    private JTextField txtPrice;
 
     public SeatComponent(int flightNo, int airline, int passengerID) {
         // Label cbo

@@ -164,20 +164,24 @@ public class WelcomePage {
         try {
             while(results.next()) {
                 FlightComponent flightComponent = new FlightComponent(
-                        results.getInt("FlightNo"),
-                        results.getInt("Airline"),
+                        results.getInt("f1.flightNo"),
+                        results.getInt("f1.airline"),
                         Integer.parseInt(txtPassengerNo.getText()),
-                        results.getString("SourceAirport"),
-                        results.getString("DestAirport"),   // TODO
-                        results.getString("DestAirport"),
-                        results.getString("DestAirport"));
+                        results.getString("aSource.airportCode"),
+                        results.getString("dSource.airportCode"),   // TODO
+                        //results.getString("f2.arrival"),
+                        //results.getString("f2.departure")
+                        null, null);
+
+                gridResults.add(flightComponent.getMainPanel(), c);
             }
         } catch (Exception sqlException){
             sqlException.printStackTrace();
         }
 
+        scrResults.setViewportView(gridResults);
 
-        for (Flight f : data) {
+       /* for (Flight f : data) {
 
             int flightNo = f.getFlightNo();
             int airline = f.getAirline();
@@ -195,7 +199,7 @@ public class WelcomePage {
             gridResults.add(flightComponent.getMainPanel(), c);
         }
 
-        scrResults.setViewportView(gridResults);
+        scrResults.setViewportView(gridResults);*/
     }
 
 

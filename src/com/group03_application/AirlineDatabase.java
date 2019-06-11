@@ -1,4 +1,5 @@
 package com.group03_application;
+import javax.sql.rowset.CachedRowSet;
 import java.sql.Timestamp;
 import java.sql.Date;
 import java.sql.Connection;
@@ -63,68 +64,70 @@ public class AirlineDatabase {
     }
 
     public ResultSet SearchFlights(String source, String destin, String depart, String arrival, String numPassengers) {
+        System.out.println(source + " " + destin);
         try {
-            ResultSet results;
-            if(source == null || destin == null){
+            ResultSet results = null;
+            if(source.equals("")|| destin.equals("")){
                 System.out.println("Please fill in your source airport, destination airport");
-            }
-            if(arrival == null && depart != null){
-                PreparedStatement query = connObj.prepareStatement(
-                        "SELECT * FROM flights f1, flightsInfo f2, planes p " +
-                                "WHERE f1.flightNo = f2.flightNo" +
-                                " AND f1.sourceAirport = '" + source +
-                                "' AND f1.destAirport = '" + destin +
-                                "' AND f2.departure BETWEEN " + Timestamp.valueOf(depart + " 00:00:00") + " AND " + Timestamp.valueOf(depart + "23:59:59") +
-                                " AND f2.planeId = p.id" +
-                                " AND p.count <= " + Integer.valueOf(numPassengers) +
-                                " AND f1.airline = a.id" +
-                                " AND f1.airline = f2.airline" +
-                                " AND f1.sourceAirport = aSource.airportCode" +
-                                " AND f2.destAirport = a.Dest.airportCode;" );
-                results = query.executeQuery();
-            }else if (depart == null && arrival != null){
-                PreparedStatement query = connObj.prepareStatement(
-                        "SELECT * FROM flights f1, flightsInfo f2, planes p " +
-                                "WHERE f1.flightNo = f2.flightNo " +
-                                "AND f1.sourceAirport = '" + source +
-                                "' AND f1.destAirport = '" + destin +
-                                "' AND f2.arrival BETWEEN " + Timestamp.valueOf(arrival + " 00:00:00") + " AND " + Timestamp.valueOf(arrival + "23:59:59") +
-                                " AND f2.planeId = p.id" +
-                                " AND p.count <= " + Integer.valueOf(numPassengers) +
-                                " AND f1.airline = a.id" +
-                                " AND f1.airline = f2.airline" +
-                                " AND f1.sourceAirport = aSource.airportCode" +
-                                " AND f2.destAirport = a.Dest.airportCode;" );
-                results = query.executeQuery();
-            }else if (depart == null && arrival == null){
-                PreparedStatement query = connObj.prepareStatement(
-                        "SELECT * FROM flights f1, flightsInfo f2, planes p " +
-                                "WHERE f1.flightNo = f2.flightNo " +
-                                "AND f1.sourceAirport = '" + source +
-                                "' AND f1.destAirport = '" + destin +
-                                "' AND f2.planeId = p.id " +
-                                " AND p.count <= " + Integer.valueOf(numPassengers) +
-                                " AND f1.airline = a.id" +
-                                " AND f1.airline = f2.airline" +
-                                " AND f1.sourceAirport = aSource.airportCode" +
-                                " AND f2.destAirport = a.Dest.airportCode;" );
-                results = query.executeQuery();
-            }else{
-                //all filled in
-                PreparedStatement query = connObj.prepareStatement(
-                        "SELECT * FROM flights f1, flightsInfo f2, planes p, airline a, airport aSource, airport aDest " +
-                                "WHERE f1.flightNo = f2.flightNo AND " +
-                                "f1.sourceAirport = '" + source +
-                                "' AND f1.destAirport = '" + destin +
-                                "' AND f2.departure BETWEEN " + Timestamp.valueOf(depart + " 00:00:00") + " AND " + Timestamp.valueOf(depart + "23:59:59") +
-                                " AND f2.arrival BETWEEN " + Timestamp.valueOf(arrival + " 00:00:00") + " AND " + Timestamp.valueOf(arrival + "23:59:59") +
-                                " AND f2.planeId = p.id" +
-                                " AND p.count <= " + Integer.valueOf(numPassengers) +
-                                " AND f1.airline = a.id" +
-                                " AND f1.airline = f2.airline" +
-                                " AND f1.sourceAirport = aSource.airportCode" +
-                                " AND f2.destAirport = a.Dest.airportCode;");
-                results = query.executeQuery();
+            } else {
+                if (arrival.equals("") && !depart.equals("")) {
+                    PreparedStatement query = connObj.prepareStatement(
+                            "SELECT * FROM flights f1, flightInfo f2, planes p, airlines a, airports aSource, airports aDest " +
+                                    "WHERE f1.flightNo = f2.flightNo" +
+                                    " AND f1.sourceAirport = '" + source +
+                                    "' AND f1.destAirport = '" + destin +
+                                    "' AND f2.departure BETWEEN " + Timestamp.valueOf(depart + " 00:00:00") + " AND " + Timestamp.valueOf(depart + "23:59:59") +
+                                    " AND f2.planeId = p.id" +
+                                    " AND p.count <= " + Integer.valueOf(numPassengers) +
+                                    " AND f1.airline = a.Id" +
+                                    " AND f1.airline = f2.airline" +
+                                    " AND f1.sourceAirport = aSource.AirportCode" +
+                                    " AND f2.destAirport = aDest.AirportCode;");
+                    results = query.executeQuery();
+                } else if (depart.equals("") && !arrival.equals("")) {
+                    PreparedStatement query = connObj.prepareStatement(
+                            "SELECT * FROM flights f1, flightInfo f2, planes p, airlines a, airports aSource, airports aDest " +
+                                    "WHERE f1.flightNo = f2.flightNo " +
+                                    "AND f1.sourceAirport = '" + source +
+                                    "' AND f1.destAirport = '" + destin +
+                                    "' AND f2.arrival BETWEEN " + Timestamp.valueOf(arrival + " 00:00:00") + " AND " + Timestamp.valueOf(arrival + "23:59:59") +
+                                    " AND f2.planeId = p.id" +
+                                    " AND p.count <= " + Integer.valueOf(numPassengers) +
+                                    " AND f1.airline = a.Id" +
+                                    " AND f1.airline = f2.airline" +
+                                    " AND f1.sourceAirport = aSource.AirportCode" +
+                                    " AND f2.destAirport = aDest.AirportCode;");
+                    results = query.executeQuery();
+                } else if (depart.equals("") && arrival.equals("")) {
+                    PreparedStatement query = connObj.prepareStatement(
+                            "SELECT * FROM flights f1, flightInfo f2, planes p, airlines a, airports aSource, airports aDest " +
+                                    "WHERE f1.flightNo = f2.flightNo " +
+                                    "AND f1.sourceAirport = '" + source +
+                                    "' AND f1.destAirport = '" + destin +
+                                    "' AND f2.planeId = p.id " +
+                                    " AND p.count <= " + Integer.valueOf(numPassengers) +
+                                    " AND f1.airline = a.Id" +
+                                    " AND f1.airline = f2.airline" +
+                                    " AND f1.sourceAirport = aSource.AirportCode" +
+                                    " AND f2.destAirport = aDest.AirportCode;");
+                    results = query.executeQuery();
+                } else {
+                    //all filled in
+                    PreparedStatement query = connObj.prepareStatement(
+                            "SELECT * FROM flights f1, flightInfo f2, planes p, airlines a, airports aSource, airports aDest " +
+                                    "WHERE f1.flightNo = f2.flightNo AND " +
+                                    "f1.sourceAirport = '" + source +
+                                    "' AND f1.destAirport = '" + destin +
+                                    "' AND f2.departure BETWEEN " + Timestamp.valueOf(depart + " 00:00:00") + " AND " + Timestamp.valueOf(depart + "23:59:59") +
+                                    " AND f2.arrival BETWEEN " + Timestamp.valueOf(arrival + " 00:00:00") + " AND " + Timestamp.valueOf(arrival + "23:59:59") +
+                                    " AND f2.planeId = p.id" +
+                                    " AND p.count <= " + Integer.valueOf(numPassengers) +
+                                    " AND f1.airline = a.Id" +
+                                    " AND f1.airline = f2.airline" +
+                                    " AND f1.sourceAirport = aSource.AirportCode" +
+                                    " AND f2.destAirport = aDest.AirportCode;");
+                    results = query.executeQuery();
+                }
             }
             return results;
         }
@@ -136,6 +139,7 @@ public class AirlineDatabase {
 
     public ResultSet SearchFlightsWithCity(String sourceCity, String destCity, String depart, String arrival, String numPassengers) {
         //numpassengers should be 1 by default if 0. Make sure that is implemented
+
         try {
             ResultSet results;
             if(sourceCity == null || destCity == null){
@@ -146,8 +150,8 @@ public class AirlineDatabase {
                         "SELECT * FROM flights f1, flightsInfo f2, planes p, airlines a, airports aSource, airports aDest " +
                                 "WHERE aSource.city = '" + sourceCity +
                                 "' AND aDest.city = '" + destCity +
-                                "' AND aSource.airportCode = f1.sourceAirport " +
-                                " AND aDest.airportCode = f1.destAirport " +
+                                "' AND aSource.AirportCode = f1.sourceAirport " +
+                                " AND aDest.AirportCode = f1.destAirport " +
                                 " AND f1.flightNo = f2.flightNo " +
                                 " AND f2.departure BETWEEN " + Timestamp.valueOf(depart + " 00:00:00") + " AND " + Timestamp.valueOf(depart + "23:59:59") +
                                 " AND f2.planeId = p.id" +
@@ -160,8 +164,8 @@ public class AirlineDatabase {
                         "SELECT * FROM flights f1, flightsInfo f2, planes p, airlines a, airports aSource, airports aDest " +
                                 "WHERE aSource.city = '" + sourceCity +
                                 "' AND aDest.city = '" + destCity +
-                                "' AND aSource.airportCode = f1.sourceAirport " +
-                                " AND aDest.airportCode = f1.destAirport " +
+                                "' AND aSource.AirportCode = f1.sourceAirport " +
+                                " AND aDest.AirportCode = f1.destAirport " +
                                 " AND f1.flightNo = f2.flightNo " +
                                 " AND f2.arrival BETWEEN " + Timestamp.valueOf(arrival + " 00:00:00") + " AND " + Timestamp.valueOf(arrival + "23:59:59") +
                                 " AND f2.planeId = p.id" +
@@ -174,8 +178,8 @@ public class AirlineDatabase {
                         "SELECT * FROM flights f1, flightsInfo f2, planes p, airlines a, airports aSource, airports aDest " +
                                 "WHERE aSource.city = '" + sourceCity +
                                 "' AND aDest.city = '" + destCity +
-                                "' AND aSource.airportCode = f1.sourceAirport " +
-                                " AND aDest.airportCode = f1.destAirport " +
+                                "' AND aSource.AirportCode = f1.sourceAirport " +
+                                " AND aDest.AirportCode = f1.destAirport " +
                                 " AND f1.flightNo = f2.flightNo " +
                                 " AND f2.planeId = p.id" +
                                 " AND p.count <= " + Integer.valueOf(numPassengers) +
@@ -188,8 +192,8 @@ public class AirlineDatabase {
                         "SELECT * FROM flights f1, flightsInfo f2, planes p, airlines a, airports aSource, airports aDest " +
                                 "WHERE aSource.city = '" + sourceCity +
                                 "' AND aDest.city = '" + destCity +
-                                "' AND aSource.airportCode = f1.sourceAirport " +
-                                " AND aDest.airportCode = f1.destAirport " +
+                                "' AND aSource.AirportCode = f1.sourceAirport " +
+                                " AND aDest.AirportCode = f1.destAirport " +
                                 " AND f1.flightNo = f2.flightNo " +
                                 " AND f2.departure BETWEEN " + Timestamp.valueOf(depart + " 00:00:00") + " AND " + Timestamp.valueOf(depart + "23:59:59") +
                                 " AND f2.arrival BETWEEN " + Timestamp.valueOf(arrival + " 00:00:00") + " AND " + Timestamp.valueOf(arrival + "23:59:59") +
