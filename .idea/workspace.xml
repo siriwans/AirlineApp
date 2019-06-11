@@ -2,8 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d0271db-d4d4-42f9-bf60-7da51dd72a7d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/group03_application/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/AirlineApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/AirlineApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/AirlineDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/AirlineDatabase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/FlightComponent$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/FlightComponent$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/FlightComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/FlightComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/SeatComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/SeatComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/SeatingPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/SeatingPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/AirlineApp/com/group03_application/WelcomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/group03_application/SeatingPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/group03_application/SeatingPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/group03_application/WelcomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/group03_application/WelcomePage.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,14 +28,20 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/CSC365FinalProject$AirlineApp.ic" NAME="AirlineApp Coverage Results" MODIFIED="1560287398855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.group03_application.*</FILTER>
+    </SUITE>
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="2134240330">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="4" />
           <entry key="form" value="3" />
-          <entry key="gitignore" value="2" />
-          <entry key="java" value="15" />
+          <entry key="gitignore" value="3" />
+          <entry key="iml" value="1" />
+          <entry key="java" value="24" />
           <entry key="sql" value="2" />
         </counts>
       </usages-collector>
@@ -26,23 +49,24 @@
         <counts>
           <entry key="CLASS" value="4" />
           <entry key="GUI_DESIGNER_FORM" value="3" />
-          <entry key="JAVA" value="15" />
-          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="IDEA_MODULE" value="1" />
+          <entry key="JAVA" value="24" />
+          <entry key="PLAIN_TEXT" value="3" />
           <entry key="SQL" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="25" />
-          <entry key="java" value="2781" />
+          <entry key="java" value="3891" />
           <entry key="sql" value="116" />
-          <entry key="txt" value="63" />
+          <entry key="txt" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2781" />
-          <entry key="PLAIN_TEXT" value="88" />
+          <entry key="JAVA" value="3891" />
+          <entry key="PLAIN_TEXT" value="96" />
           <entry key="SQL" value="116" />
         </counts>
       </usages-collector>
@@ -50,58 +74,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/group03_application/WelcomePage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="101" column="50" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sqlstatements.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="65" column="22" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/group03_application/SeatComponent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7">
-              <caret column="1" selection-start-column="1" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="308" column="5" lean-forward="true" selection-start-line="308" selection-start-column="5" selection-end-line="308" selection-end-column="5" />
+            <state relative-caret-position="422">
+              <caret line="300" column="77" selection-start-line="300" selection-start-column="77" selection-end-line="300" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2289#2290#0" expanded="true" />
-                <element signature="e#2316#2317#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -109,8 +89,68 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/group03_application/SeatingPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="240">
+              <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/group03_application/SeatComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="706">
+              <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/group03_application/WelcomePage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="121" column="21" lean-forward="true" selection-start-line="121" selection-start-column="21" selection-end-line="121" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/group03_application/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#282#291#0" expanded="true" />
+                <element signature="e#571#580#0" expanded="true" />
+                <element signature="e#669#678#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/javax/swing/plaf/basic/BasicButtonListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="412">
+              <caret line="251" selection-start-line="251" selection-end-line="251" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/group03_application/FlightComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="511">
+              <caret line="35" column="72" selection-start-line="35" selection-start-column="72" selection-end-line="35" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -129,10 +169,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pnlMain</find>
-      <find>ResultSet</find>
-      <find>btnLogin</find>
-      <find>showMessageDialog</find>
       <find>RequeryFlightsTable</find>
       <find>SearchFlights</find>
       <find>searchfli</find>
@@ -155,6 +191,14 @@
       <find>System.out.println</find>
       <find>available seats</find>
       <find>creditcard</find>
+      <find>price</find>
+      <find>curre</find>
+      <find>searchforcus</find>
+      <find>currentCus</find>
+      <find>currentcu</find>
+      <find>current</find>
+      <find>UserI</find>
+      <find>User.ID</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,7 +223,6 @@
         <option value="$PROJECT_DIR$/src/com/group03_application/FlightListComponent.form" />
         <option value="$PROJECT_DIR$/src/com/group03_application/FlightTransactionComponent.form" />
         <option value="$PROJECT_DIR$/src/com/group03_application/WelcomePage.form" />
-        <option value="$PROJECT_DIR$/src/com/group03_application/SeatingPage.java" />
         <option value="$PROJECT_DIR$/src/DAO/CreditCard.java" />
         <option value="$PROJECT_DIR$/src/DAO/FlightInfo.java" />
         <option value="$PROJECT_DIR$/src/DAO/Flight.java" />
@@ -191,13 +234,15 @@
         <option value="$PROJECT_DIR$/src/com/group03_application/FlightComponent.java" />
         <option value="$PROJECT_DIR$/sqlstatements.sql" />
         <option value="$PROJECT_DIR$/src/com/group03_application/SeatComponent.java" />
-        <option value="$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java" />
-        <option value="$PROJECT_DIR$/src/com/group03_application/WelcomePage.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/com/group03_application/SeatingPage.java" />
+        <option value="$PROJECT_DIR$/src/com/group03_application/WelcomePage.java" />
+        <option value="$PROJECT_DIR$/src/com/group03_application/User.java" />
+        <option value="$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="289" />
     <option name="y" value="23" />
     <option name="width" value="1151" />
@@ -231,6 +276,30 @@
               <item name="CSC365FinalProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="group03_application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CSC365FinalProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="group03_application" type="462c0819:PsiDirectoryNode" />
+              <item name="FlightComponent" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="CSC365FinalProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="group03_application" type="462c0819:PsiDirectoryNode" />
+              <item name="SeatComponent" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="CSC365FinalProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="group03_application" type="462c0819:PsiDirectoryNode" />
+              <item name="SeatingPage" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="CSC365FinalProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="group03_application" type="462c0819:PsiDirectoryNode" />
+              <item name="WelcomePage" type="e9f4de52:FormNode" />
             </path>
             <path>
               <item name="CSC365FinalProject" type="b2602c69:ProjectViewProjectNode" />
@@ -300,7 +369,121 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560286249849" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560291211735" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/group03_application/FlightComponent.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/group03_application/SeatComponent.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/group03_application/WelcomePage.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/group03_application/BookingComponent.form</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/group03_application/BookingComponent.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -400,7 +583,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560286017149</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="seatings">
+      <created>1560286268517</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1560286268517</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -413,10 +603,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
+    <frame x="289" y="23" width="1151" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18541667" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.06602954" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -425,15 +615,16 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49798927" weight="0.32931727" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5298611" weight="0.5186104" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.52736753" visible="true" weight="0.02853598" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798927" weight="0.39826304" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49798927" weight="0.32931727" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49513888" visible="true" weight="0.2853598" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5048611" side_tool="true" visible="true" weight="0.2853598" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49513888" weight="0.2853598" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.4726325" side_tool="true" visible="true" weight="0.02853598" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49865952" weight="0.32931727" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49329758" weight="0.23200993" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49166667" weight="0.23200993" />
+      <window_info anchor="right" id="Coverage" side_tool="true" visible="true" weight="8.6880976E-4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -449,20 +640,14 @@
     <MESSAGE value="updated print stuff" />
     <MESSAGE value="seatings stuff" />
     <MESSAGE value="uhhhh" />
-    <option name="LAST_COMMIT_MESSAGE" value="uhhhh" />
+    <MESSAGE value="seatings" />
+    <option name="LAST_COMMIT_MESSAGE" value="seatings" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/DAO/FlightDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="16" column="64" lean-forward="true" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/javax/swing/plaf/basic/BasicButtonListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="45" column="79" lean-forward="true" selection-start-line="45" selection-start-column="79" selection-end-line="45" selection-end-column="79" />
         </state>
       </provider>
     </entry>
@@ -496,38 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/group03_application/AirlineApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/group03_application/FlightComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1554#1555#0" expanded="true" />
-            <element signature="e#1584#1585#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/group03_application/SeatingPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/mysql-connector-java-8.0.16/mysql-connector-java-8.0.16/mysql-connector-java-8.0.16.jar!/com/mysql/cj/jdbc/exceptions/SQLError.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -549,20 +702,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/group03_application/SeatComponent.java">
+    <entry file="file://$PROJECT_DIR$/CSC365FinalProject.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/AirlineApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/javax/swing/plaf/basic/BasicButtonListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="251" selection-start-line="251" selection-end-line="251" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/FlightComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="35" column="72" selection-start-line="35" selection-start-column="72" selection-end-line="35" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#282#291#0" expanded="true" />
+            <element signature="e#571#580#0" expanded="true" />
+            <element signature="e#669#678#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/group03_application/WelcomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="101" column="50" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
+        <state relative-caret-position="520">
+          <caret line="121" column="21" lean-forward="true" selection-start-line="121" selection-start-column="21" selection-end-line="121" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/SeatingPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/group03_application/SeatComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="706">
+          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -571,20 +784,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/group03_application/AirlineDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="308" column="5" lean-forward="true" selection-start-line="308" selection-start-column="5" selection-end-line="308" selection-end-column="5" />
+        <state relative-caret-position="422">
+          <caret line="300" column="77" selection-start-line="300" selection-start-column="77" selection-end-line="300" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2289#2290#0" expanded="true" />
-            <element signature="e#2316#2317#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
         </state>
       </provider>
     </entry>
