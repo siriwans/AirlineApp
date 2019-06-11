@@ -109,7 +109,6 @@ public class WelcomePage {
             public void actionPerformed(ActionEvent e) {
 
                 if (txtPassportID.getText().equals("")) {
-                    System.out.println("empty string");
                     JOptionPane.showMessageDialog(frame, "Please enter your passport.");
                 } else {
                     ResultSet data = AirlineApp.airlineDB.searchForCustomer(txtPassportID.getText());

@@ -179,26 +179,52 @@ public class AirlineDatabase {
     }
 
 
-    public ResultSet availableSeats(String FlightNo, String airline) {
-        System.out.println("availableSeats: FlightNo = " + FlightNo + "; airline = " + airline);
+    public void assignSeat(String seatNo, String flightNo, String airline) {
         try {
-            //TODO Write query to get available seats the customer can choose from
+            PreparedStatement query = connObj.prepareStatement(
+                    "SELECT SeatNo, Class, Customer, SeatType, Price FROM seatings s " +
+                            "JOIN flightInfo fin on s.PlaneId = fin.PlaneId" +
+                            " WHERE fin.FlightNo = " + flightNo +
+                            " AND fin.airline = " + airline +
+                            " AND s.SeatNo = " + seatNo + ";"
+                    //TODO UPDATE THE CUSTOMER
+            );
+            ResultSet results1 = query.executeQuery();
 
-            PreparedStatement query = connObj.prepareStatement("Select PlaneId from flightInfo fi where fi.Airline = '" + airline + "' and fi.FlightNo = '" + FlightNo + "';");
+        } catch (Exception sqlException) {
+            sqlException.printStackTrace();
+        }
+    }
 
-            ResultSet results = query.executeQuery();
-            if ((Integer)results.getInt("PlaneId") != null)
-            {
-                int planeid = results.getInt("PlaneId");
-                PreparedStatement query1 = connObj.prepareStatement("Select * from seatings s where s.PlaneId = " + planeid + " and s.Customer = NULL;");
-                ResultSet results1 = query1.executeQuery();
-                return results1;
-            }
-            else
-            {
-                System.out.println("No seats available in this plane");
-                return null;
-            }
+    public void unassignSeat(String seatNo, String flightNo, String airline) {
+        try {
+            PreparedStatement query = connObj.prepareStatement(
+                    "SELECT SeatNo, Class, Customer, SeatType, Price FROM seatings s " +
+                            "JOIN flightInfo fin on s.PlaneId = fin.PlaneId" +
+                            " WHERE fin.FlightNo = " + flightNo +
+                            " AND fin.airline = " + airline +
+                            " AND s.SeatNo = " + seatNo + ";"
+                    //TODO UPDATE THE CUSTOMER
+            );
+            ResultSet results1 = query.executeQuery();
+
+        } catch (Exception sqlException) {
+            sqlException.printStackTrace();
+        }
+    }
+
+    public ResultSet availableSeats(String flightNo, String airline, String seatClass, String seatType) {
+        System.out.println("availableSeats: FlightNo = " + flightNo + "; airline = " + airline);
+        try {
+            PreparedStatement query = connObj.prepareStatement(
+                    "SELECT SeatNo, Class, Customer, SeatType, Price FROM seatings s " +
+                            "JOIN flightInfo fin on s.PlaneId = fin.PlaneId" +
+                            " WHERE fin.FlightNo = " + flightNo +
+                            " AND fin.airline = " + airline +
+                            " AND s.Customer is Null;"
+            );
+            ResultSet results1 = query.executeQuery();
+            return results1;
         } catch (Exception sqlException) {
             sqlException.printStackTrace();
         }
