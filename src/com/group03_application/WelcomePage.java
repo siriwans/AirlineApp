@@ -168,10 +168,9 @@ public class WelcomePage {
                         results.getInt("f1.airline"),
                         Integer.parseInt(txtPassengerNo.getText()),
                         results.getString("aSource.airportCode"),
-                        results.getString("dSource.airportCode"),   // TODO
-                        //results.getString("f2.arrival"),
-                        //results.getString("f2.departure")
-                        null, null);
+                        results.getString("aDest.airportCode"),
+                        results.getString("f2.arrival"),
+                        results.getString("f2.departure"));
 
                 gridResults.add(flightComponent.getMainPanel(), c);
             }

@@ -91,7 +91,7 @@ public class AirlineDatabase {
                             "SELECT * FROM flights f1, flightInfo f2, planes p, airlines a, airports aSource, airports aDest " +
                                     "WHERE aSource.City LIKE '%" + sourceCity +
                                     "%' AND aDest.City LIKE '%" + destCity +
-                                    "' AND aSource.AirportCode = f1.sourceAirport " +
+                                    "%' AND aSource.AirportCode = f1.sourceAirport " +
                                     " AND aDest.AirportCode = f1.destAirport " +
                                     " AND f1.FlightNo = f2.FlightNo " +
                                     " AND f2.Arrival BETWEEN " + Timestamp.valueOf(arrival + " 00:00:00") + " AND " + Timestamp.valueOf(arrival + "23:59:59") +
@@ -105,7 +105,7 @@ public class AirlineDatabase {
                             "SELECT * FROM flights f1, flightInfo f2, planes p, airlines a, airports aSource, airports aDest " +
                                     "WHERE aSource.City LIKE '%" + sourceCity +
                                     "%' AND aDest.City LIKE '%" + destCity +
-                                    "' AND aSource.AirportCode = f1.sourceAirport " +
+                                    "%' AND aSource.AirportCode = f1.sourceAirport " +
                                     " AND aDest.AirportCode = f1.destAirport " +
                                     " AND f1.FlightNo = f2.FlightNo " +
                                     " AND f2.planeId = p.id" +
@@ -119,7 +119,7 @@ public class AirlineDatabase {
                             "SELECT * FROM flights f1, flightInfo f2, planes p, airlines a, airports aSource, airports aDest " +
                                     "WHERE aSource.City LIKE '%" + sourceCity +
                                     "%' AND aDest.City LIKE '%" + destCity +
-                                    "' AND aSource.AirportCode = f1.sourceAirport " +
+                                    "%' AND aSource.AirportCode = f1.sourceAirport " +
                                     " AND aDest.AirportCode = f1.destAirport " +
                                     " AND f1.FlightNo = f2.FlightNo " +
                                     " AND f2.departure BETWEEN " + Timestamp.valueOf(depart + " 00:00:00") + " AND " + Timestamp.valueOf(depart + "23:59:59") +

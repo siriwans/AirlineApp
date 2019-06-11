@@ -12,6 +12,7 @@ public class SeatComponent {
     private JTextField txtSeatType;
     private JTextField txtClass;
     private JTextField txtPrice;
+    private JComboBox comboBox1;
 
     public SeatComponent(int flightNo, int airline, int passengerID) {
         // Label cbo
