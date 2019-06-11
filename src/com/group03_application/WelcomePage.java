@@ -73,33 +73,12 @@ public class WelcomePage {
         frame.pack();
         frame.setVisible(true);
 
-        /*btnSearch.addActionListener(new ActionListener() {
+        btnSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Searching...");
                 RequeryFlightsResult(AirlineApp.flightDAO.get(txtSource.getText(), txtDestin.getText()));
 
-            }
-        });*/
-        /*//TODO TEMPORARY CHECKING AVAILABLESEATS --> WORKS
-        btnSearch.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AirlineApp.airlineDB.availableSeats(Integer.valueOf(txtSource.getText()),
-                        Integer.valueOf(txtDestin.getText()));
-                System.out.println("SEARCHING FOR SEATS POSSIBLE WITH FLIGHTNO AND AIRLINE");
-                //JOptionPane.showMessageDialog(frame, "Customer created. Login with your passport id: ###");
-                //((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardLogin");
-            }
-        });*/
-        btnSearch.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AirlineApp.airlineDB.checkCreditCard(Integer.valueOf(txtSource.getText()),
-                        txtDestin.getText(), txtArrival.getText());
-                System.out.println("CHECK credit card exists");
-                //JOptionPane.showMessageDialog(frame, "Customer created. Login with your passport id: ###");
-                //((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardLogin");
             }
         });
         btnUser.addActionListener(new ActionListener() {
@@ -134,11 +113,8 @@ public class WelcomePage {
                     JOptionPane.showMessageDialog(frame, "Please enter your passport.");
                 } else {
                     ResultSet data = AirlineApp.airlineDB.searchForCustomer(txtPassportID.getText());
-                    System.out.println(txtPassportID.getText());
-                    try {
-                        currentCustomer = data.getInt("Id");
-                        System.out.println(currentCustomer);
-                    }
+                    try{
+                        currentCustomer = data.getInt("Id");}
                     catch (Exception sqlException){
                         sqlException.printStackTrace();}
                     //TODO need to show customer login info
@@ -172,7 +148,7 @@ public class WelcomePage {
     }
 
 
-    /*private void RequeryFlightsResult(List<Flight> data) {
+    private void RequeryFlightsResult(List<Flight> data) {
 
         //ResultSet data = AirlineApp.airlineDB.SearchFlights(txtSource.getText(), txtDestin.getText(), txtDepartture.getText(),
         //            txtArrival.getText(), txtPassengerNo.getText());
@@ -220,7 +196,7 @@ public class WelcomePage {
         }
 
         scrResults.setViewportView(gridResults);
-    }*/
+    }
 
 
 }
