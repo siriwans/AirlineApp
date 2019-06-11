@@ -35,7 +35,11 @@ public class FlightComponent {
                 SeatingPage seating = new SeatingPage(flightNo, airline, numPassengers);
                 int response = JOptionPane.showConfirmDialog(null, seating.getMainPanel(),
                         "Select seats", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-
+                if (response == JOptionPane.OK_OPTION) {
+                    User.flightNo = flightNo;
+                    User.airline = airline;
+                    User.totalPrice += 1;
+                }
 
                 // open transaction page
                 if (response == JOptionPane.OK_OPTION) {

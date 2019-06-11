@@ -13,6 +13,7 @@ public class User {
     public static int airline = -1; // of the airline of the flight they selected
     public static ArrayList<Integer> listReservationNum = new ArrayList<Integer>(); //each booking
     public static ArrayList<Integer> singleBookingPrice = new ArrayList<Integer>();
+    public static ArrayList<Integer> reservationList = new ArrayList<Integer>();
     public static int cardNumber = -1;
     public static double totalPrice = 0;
 
