@@ -15,7 +15,7 @@ public class SeatComponent {
         txtPassenger.setText("Passenger " + passengerID + ": ");
 
         // Populate cbo
-        ResultSet seatTypes = AirlineApp.airlineDB.availableSeats(Integer.toString(flightNo), Integer.toString(airline));
+        ResultSet seatTypes = AirlineApp.airlineDB.availableSeats(flightNo, airline);
         System.out.println("creating seat component");
         try {
             while (seatTypes.next()) {
