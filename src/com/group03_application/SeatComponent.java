@@ -33,8 +33,9 @@ public class SeatComponent {
                     txtSeatNo.setText("");
                     txtPrice.setText("");
 
+
                     // update db
-                    AirlineApp.airlineDB.unassignSeat(txtSeatNo.getText(), Integer.toString(flightNo), Integer.toString(airline));
+                    //AirlineApp.airlineDB.unassignSeat(txtSeatNo.getText(), Integer.toString(flightNo), Integer.toString(airline));
                 }
 
                 // Assign a seat
@@ -57,8 +58,13 @@ public class SeatComponent {
                                 txtSeatNo.setText(seatNo);
                                 txtPrice.setText(Integer.toString(rs.getInt("Price")));
 
-                                // update database
-                                AirlineApp.airlineDB.assignSeat(seatNo, Integer.toString(flightNo), Integer.toString(flightNo));
+                                User.listSeatNum.add(Integer.parseInt(seatNo));
+                                User.singleBookingPrice.add(rs.getDouble("Price"));
+                                User.totalPrice += rs.getDouble("Price");
+
+
+                            // update database
+                                //AirlineApp.airlineDB.assignSeat(seatNo, Integer.toString(flightNo), Integer.toString(flightNo),txtPrice.getText());
                             }
 
 

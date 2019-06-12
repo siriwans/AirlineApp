@@ -38,7 +38,6 @@ public class FlightComponent {
                 if (response == JOptionPane.OK_OPTION) {
                     User.flightNo = flightNo;
                     User.airline = airline;
-                    User.totalPrice += 1;
                 }
 
                 // open transaction page

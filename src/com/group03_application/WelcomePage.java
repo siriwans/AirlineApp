@@ -83,6 +83,7 @@ public class WelcomePage {
                     return;
                 }
                 //RequeryFlightsResult(AirlineApp.flightDAO.get(txtSource.getText(), txtDestin.getText()));
+                User.numPassengers = Integer.parseInt(txtPassengerNo.getText());
                 RequeryFlightsResult();
 
             }

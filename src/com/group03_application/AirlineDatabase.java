@@ -177,7 +177,7 @@ public class AirlineDatabase {
     }
 
 
-    public void assignSeat(String seatNo, String flightNo, String airline) {
+    public void assignSeat(String seatNo, String flightNo, String airline, String price) {
         try {
             PreparedStatement query = connObj.prepareStatement(
                     "SELECT SeatNo, Class, Customer, SeatType, Price FROM seatings s " +
@@ -256,18 +256,6 @@ public class AirlineDatabase {
             System.out.println("No customer by that passport in our system");
         }
     }
-    /*public void InsertBooking(int customer, int cardNo, int flightNo, int airline, int seatNo)
-    {
-       try {
-           PreparedStatement query = connObj.prepareStatement(
-                   "INSERT INTO bookings (Customer, CardNo, FlightNo, Airline, SeatNo, Cancelled) " +
-                           "VALUES ('" + customer + "','" +  cardNo + "','" +  flightNo + "','" + airline +  "','"
-                           + seatNo + "', 'No' );"
-           );
-           query.executeUpdate();
-       } catch (Exception sqlException) {
-       }
-    }*/
 
     //PRINTS ALL SEATS AVAILABLE GIVEN FLIGHTNO AND AIRLINE
     public ResultSet availableSeats(int flightNo, int airline) {
@@ -319,29 +307,38 @@ public class AirlineDatabase {
         try {
             if (checkCreditCard(cardNo) != null)
             {
-                User.cardNumber = cardNo;
-                PreparedStatement booking = connObj.prepareStatement(
-                        "INSERT INTO bookings (Customer, CardNo, FlightNo, Airline) " +
-                                "VALUES ('" + User.Id + "," +  cardNo + "," +  User.flightNo + "," + User.airline +  ");"
-                );
-                booking.executeUpdate();
-                PreparedStatement query = connObj.prepareStatement(
-                        "SELECT ReservationNo FROM bookings where Customer = " + User.Id + " and CardNo = " + cardNo +
-                                " and FlightNo = " + User.flightNo + " and Airline = " + User.airline + ";" );
-                ResultSet result = query.executeQuery();
-                result.next();
-                PreparedStatement transaction = connObj.prepareStatement(
-                        "INSERT INTO transactions (creditCard, Amount, Booking) " +
-                                "VALUES ( " + cardNo + "," +  User.totalPrice + "," +
-                                result.getInt("ReservationNo") + ";"
-                );
-                transaction.executeUpdate();
+                for (int i = 0; i < User.numPassengers; i++)
+                {
+                    User.cardNumber = cardNo;
+                    PreparedStatement booking = connObj.prepareStatement(
+                            "INSERT INTO bookings (Customer, CardNo, FlightNo, Airline, SeatNo) " +
+                                    "VALUES (" + User.Id + "," +  cardNo + "," +  User.flightNo + "," + User.airline + "," + User.listSeatNum.get(i) +");"
+                    );
+                    booking.executeUpdate();
+                    PreparedStatement query = connObj.prepareStatement(
+                            "SELECT ReservationNo FROM bookings where Customer = " + User.Id + " and CardNo = " + cardNo +
+                                    " and FlightNo = " + User.flightNo + " and Airline = " + User.airline + " and SeatNo = "
+                                    + User.listSeatNum.get(i) + ";" );
+                    ResultSet result = query.executeQuery();
+                    result.next();
+                    User.listReservationNum.add(result.getInt("ReservationNo"));
+                    PreparedStatement transaction = connObj.prepareStatement(
+                            "INSERT INTO transactions (creditCard, Amount, Booking) " +
+                                    "VALUES ( " + cardNo + "," +  User.singleBookingPrice.get(i) + "," +
+                                    result.getInt("ReservationNo") + ";"
+                    );
+                    transaction.executeUpdate();
+                }
+                System.out.println("TOTAL PAYMENT: " + User.totalPrice);
             }
             else{
                 System.out.println("INVALID CARD");
             }
         }
         catch (Exception sqlException) {
+            System.out.println("");
+            sqlException.printStackTrace();
+
         }
 
     }
