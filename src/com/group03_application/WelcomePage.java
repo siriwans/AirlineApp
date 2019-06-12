@@ -10,8 +10,6 @@ import java.util.List;
 
 public class WelcomePage {
 
-    private int currentCustomer = -1;
-
     private JPanel pnlFlights;
     private JTextField txtSource;
     private JTextField txtDestin;
@@ -73,6 +71,10 @@ public class WelcomePage {
         frame.pack();
         frame.setVisible(true);
 
+        // Default: show user info
+        ((CardLayout)(pnlBody.getLayout())).show(pnlBody, "cardUser");
+
+
         btnSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -112,16 +114,27 @@ public class WelcomePage {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                // User must input login info
                 if (txtPassportID.getText().equals("")) {
                     JOptionPane.showMessageDialog(frame, "Please enter your passport.");
-                } else {
-                    ResultSet data = AirlineApp.airlineDB.searchForCustomer(txtPassportID.getText());
+                    return;
+                }
+                // Verify login info
+                else {
                     try{
-                        currentCustomer = data.getInt("Id");}
+                        ResultSet data = AirlineApp.airlineDB.searchForCustomer(txtPassportID.getText());
+                        data.next();
+                        User.Id = data.getInt("Id");
+                        User.firstName = data.getString("FirstName");
+                        User.lastName = data.getString("LastName");
+                    }
                     catch (Exception sqlException){
-                        sqlException.printStackTrace();}
+                        sqlException.printStackTrace();
+                    }
+
                     //TODO need to show customer login info
                     ((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardUserInfo");
+                    RequeryActiveReservations();
                 }
 
             }
@@ -144,7 +157,6 @@ public class WelcomePage {
         btnLogout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                currentCustomer = -1;
                 ((CardLayout)(pnlUserCard.getLayout())).show(pnlUserCard, "cardLogin");
             }
         });
@@ -157,6 +169,7 @@ public class WelcomePage {
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
+        c.anchor = GridBagConstraints.FIRST_LINE_START;
 
         ResultSet results = AirlineApp.airlineDB.SearchFlightsWithCity(txtSource.getText(),
                 txtDestin.getText(), txtDepartture.getText(), txtArrival.getText(), txtPassengerNo.getText());
@@ -187,28 +200,23 @@ public class WelcomePage {
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
+        c.anchor = GridBagConstraints.FIRST_LINE_START;
 
+        // TODO get list of booked flights
         ResultSet results = AirlineApp.airlineDB.SearchFlightsWithCity(txtSource.getText(),
                 txtDestin.getText(), txtDepartture.getText(), txtArrival.getText(), txtPassengerNo.getText());
 
         try {
-            while(results.next()) {
-                FlightComponent flightComponent = new FlightComponent(
-                        results.getInt("f1.flightNo"),
-                        results.getInt("f1.airline"),
-                        Integer.parseInt(txtPassengerNo.getText()),
-                        results.getString("aSource.airportCode"),
-                        results.getString("aDest.airportCode"),
-                        results.getString("f2.arrival"),
-                        results.getString("f2.departure"));
+            for (int i = 0; i < 3; i++) {
+                BookingComponent bookingComponent = new BookingComponent(i);
 
-                gridResults.add(flightComponent.getMainPanel(), c);
+                gridResults.add(bookingComponent.getPnlMain(), c);
             }
         } catch (Exception sqlException){
             sqlException.printStackTrace();
         }
 
-        scrResults.setViewportView(gridResults);
+        scrReservationsActive.setViewportView(gridResults);
     }
 
 

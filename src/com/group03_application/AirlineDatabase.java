@@ -294,12 +294,11 @@ public class AirlineDatabase {
     }
 
     //returns NULL if no card in system, return resultSet if card in system
-    public ResultSet checkCreditCard(int cardnum, String fname, String lname)
+    public ResultSet checkCreditCard(int cardnum)
     {
         try {
             PreparedStatement query = connObj.prepareStatement(
-                    "SELECT * FROM creditCards where CardNo = " + cardnum + " and Firstname = '" +
-                            fname + "' and Lastname = '" + lname+ "';" );
+                    "SELECT * FROM creditCards where CardNo = " + cardnum + ";" );
             ResultSet results = query.executeQuery();
             if (results.next() && (Integer)results.getInt("CardNo") != null)
             {
@@ -314,9 +313,37 @@ public class AirlineDatabase {
         return null;
     }
 
-    public ResultSet bookingTransaction()
+    //checks the card validity too
+    public void InsertBookingTransaction(int cardNo)
     {
-        return null;
+        try {
+            if (checkCreditCard(cardNo) != null)
+            {
+                User.cardNumber = cardNo;
+                PreparedStatement booking = connObj.prepareStatement(
+                        "INSERT INTO bookings (Customer, CardNo, FlightNo, Airline) " +
+                                "VALUES ('" + User.Id + "," +  cardNo + "," +  User.flightNo + "," + User.airline +  ");"
+                );
+                booking.executeUpdate();
+                PreparedStatement query = connObj.prepareStatement(
+                        "SELECT ReservationNo FROM bookings where Customer = " + User.Id + " and CardNo = " + cardNo +
+                                " and FlightNo = " + User.flightNo + " and Airline = " + User.airline + ";" );
+                ResultSet result = query.executeQuery();
+                result.next();
+                PreparedStatement transaction = connObj.prepareStatement(
+                        "INSERT INTO transactions (creditCard, Amount, Booking) " +
+                                "VALUES ( " + cardNo + "," +  User.totalPrice + "," +
+                                result.getInt("ReservationNo") + ";"
+                );
+                transaction.executeUpdate();
+            }
+            else{
+                System.out.println("INVALID CARD");
+            }
+        }
+        catch (Exception sqlException) {
+        }
+
     }
 
 

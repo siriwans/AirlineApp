@@ -28,9 +28,7 @@ public class SeatingPage {
             int passengerID = i+1;
             SeatComponent seat = new SeatComponent(flightNo, airline, passengerID);
             gridResults.add(seat.getMainPanel(), c);
-
         }
-
         scrSeats.setViewportView(gridResults);
 
     }

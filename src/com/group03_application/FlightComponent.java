@@ -36,9 +36,27 @@ public class FlightComponent {
                 int response = JOptionPane.showConfirmDialog(null, seating.getMainPanel(),
                         "Select seats", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (response == JOptionPane.OK_OPTION) {
-                    // open transaction page
+                    User.flightNo = flightNo;
+                    User.airline = airline;
+                    User.totalPrice += 1;
+                }
+
+                // open transaction page
+                if (response == JOptionPane.OK_OPTION) {
+                    JFrame frame = new JFrame();
+                    frame.setTitle("Confirm Booking");
+                    frame.setMinimumSize(new Dimension(500, 300));
+                    frame.setContentPane(new FlightTransactionComponent().getPnlMain());
+                    frame.setVisible(true);
+                    //FlightTransactionComponent transaction =  new FlightTransactionComponent();
+                    //int response2 = JOptionPane.showConfirmDialog(null, transaction.getPnlMain(),
+                    //        "Confirm Booking", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+                    // confirm booking
+                    //if (response2 == JOptionPane.OK_OPTION) {
 
 
+                    //}
                 }
             }
         });
