@@ -20,7 +20,7 @@ public class User {
     public static int numPassengers = -1;
 
 
-    public void confirmPurchase()
+    public static void confirmPurchase()
     {
         listSeatNum = new ArrayList<Integer>();
         flightNo = -1;

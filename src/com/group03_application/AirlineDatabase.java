@@ -324,12 +324,13 @@ public class AirlineDatabase {
                     User.listReservationNum.add(result.getInt("ReservationNo"));
                     PreparedStatement transaction = connObj.prepareStatement(
                             "INSERT INTO transactions (creditCard, Amount, Booking) " +
-                                    "VALUES ( " + cardNo + "," +  User.singleBookingPrice.get(i) + "," +
-                                    result.getInt("ReservationNo") + ";"
+                                    "VALUES (" + cardNo + ", " +  User.singleBookingPrice.get(i) + " ," +
+                                    result.getInt("ReservationNo") + ");"
                     );
                     transaction.executeUpdate();
                 }
                 System.out.println("TOTAL PAYMENT: " + User.totalPrice);
+                User.confirmPurchase();
             }
             else{
                 System.out.println("INVALID CARD");
