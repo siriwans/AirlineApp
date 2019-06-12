@@ -6,7 +6,9 @@ CREATE TRIGGER `check_seat_not_booked`
 BEFORE INSERT ON `bookings`
 FOR EACH ROW
 BEGIN
-  IF (SELECT customer FROM seatings WHERE NEW.seatno = seatingno) IS NOT NULL THEN
+  IF (SELECT customer FROM seatings WHERE NEW.seatno = seatno AND planeid = (
+      select planeid from flightInfo where NEW.airline = airline AND NEW.flightNo = flightNo)
+      ) IS NOT NULL THEN
     SIGNAL SQLSTATE '12345'
       SET MESSAGE_TEXT = 'Seat already taken on this plane and flight';
 
@@ -39,7 +41,7 @@ BEGIN
           AND f.flightno = NEW.flightno
       )) + 1)
       >=
-      ( SELECT p.count FROM planes p WHERE p.id = (
+      ( SELECT p.capacity FROM planes p WHERE p.id = (
           SELECT f.planeid
           FROM flightInfo f
           WHERE f.airline = NEW.airline
