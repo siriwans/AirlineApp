@@ -32,8 +32,12 @@ public class FlightTransactionComponent {
 
                 // TODO check if card number for this customer exists
                 if (txtCardNumber.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "This card number doesn't exist");
+                    JOptionPane.showMessageDialog(null, "Please input card number.");
                     return;
+                }
+                else
+                {
+                    AirlineApp.airlineDB.InsertBookingTransaction(Integer.parseInt(txtCardNumber.getText()));
                 }
 
                 // Update database to confirm booking

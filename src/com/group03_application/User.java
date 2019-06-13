@@ -12,18 +12,21 @@ public class User {
     public static int flightNo = -1; // of the flight they selected
     public static int airline = -1; // of the airline of the flight they selected
     public static ArrayList<Integer> listReservationNum = new ArrayList<Integer>(); //each booking
-    public static ArrayList<Integer> singleBookingPrice = new ArrayList<Integer>();
+    public static ArrayList<Double> singleBookingPrice = new ArrayList<Double>();
     public static ArrayList<Integer> reservationList = new ArrayList<Integer>();
     public static int cardNumber = -1;
     public static double totalPrice = 0;
 
-    public void confirmPurchase()
+    public static int numPassengers = -1;
+
+
+    public static void confirmPurchase()
     {
         listSeatNum = new ArrayList<Integer>();
         flightNo = -1;
         airline = -1;
         listReservationNum = new ArrayList<Integer>();
-        singleBookingPrice = new ArrayList<Integer>();
+        singleBookingPrice = new ArrayList<Double>();
         cardNumber = -1;
         totalPrice = 0;
     }
