@@ -16,7 +16,7 @@ public class BookingComponent {
         btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                AirlineApp.airlineDB
             }
         });
     }

@@ -346,6 +346,27 @@ public class AirlineDatabase {
 
     }
 
+    public void cancelBookings(String flightNo, String airline) {
+        try {
+
+            for (int i=0; i < User.listSeatNum.size(); i++) {
+                PreparedStatement transaction = connObj.prepareStatement(
+                    " DELETE FROM bookings WHERE Customer =" + User.Id + " AND " +
+                            "CardNo = " + User.cardNumber + " AND " +
+                            "FlightNo = " User.flightNo + " AND " +
+                            "Airline = " + User.airline + " AND " +
+                            "SeatNo =" + User.listSeatNum.get(i) +
+                            ";"
+                );
+
+            transaction.executeUpdate();
+            }
+        }
+        catch (Exception sqlException) {
+            sqlException.printStackTrace();
+        }
+    }
+
 
 
 }
